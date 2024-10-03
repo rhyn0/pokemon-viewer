@@ -1,24 +1,53 @@
 {
-  "name": "pokemon-viewer",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.13"
-  },
-  "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1"
-  }
+    "name": "pokemon-viewer",
+    "version": "1.0.0",
+    "description": "Frontend to visualize PokeAPI data.",
+    "type": "module",
+    "scripts": {
+        "dev": "vinxi dev",
+        "build": "vinxi build",
+        "start": "vinxi start",
+        "prepare": "husky",
+        "pre-commit": "./.husky/pre-commit",
+        "lint": "npm run lint:rules && npm run lint:format",
+        "lint:types": "tsc --noEmit",
+        "lint:format": "biome format --error-on-warnings ./",
+        "lint:rules": "biome lint --error-on-warnings ./",
+        "fix": "npm run fix:format && npm run fix:lint",
+        "fix:format": "biome format --write ./",
+        "fix:lint": "biome lint --write ./",
+        "test": "vitest run",
+        "test:watch": "vitest"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@radix-ui/react-slot": "^1.1.0",
+        "@tanstack/react-router": "^1.58.16",
+        "@tanstack/router-devtools": "^1.58.16",
+        "@tanstack/start": "^1.58.16",
+        "@vitejs/plugin-react": "^4.3.2",
+        "class-variance-authority": "^0.7.0",
+        "clsx": "^2.1.1",
+        "lucide-react": "^0.447.0",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "tailwind-merge": "^2.5.2",
+        "tailwindcss-animate": "^1.0.7",
+        "vinxi": "^0.4.3"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "^1.9.3",
+        "@testing-library/jest-dom": "^6.5.0",
+        "@testing-library/react": "^16.0.1",
+        "@types/react": "^18.3.11",
+        "@types/react-dom": "^18.3.0",
+        "autoprefixer": "^10.4.20",
+        "husky": "^9.1.6",
+        "tailwindcss": "^3.4.13",
+        "typescript": "^5.6.2",
+        "vite-tsconfig-paths": "^5.0.1",
+        "vitest": "^2.1.2"
+    }
 }
