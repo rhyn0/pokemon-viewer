@@ -1,12 +1,18 @@
-import { createRootRoute } from "@tanstack/react-router";
+import { createRootRouteWithContext } from "@tanstack/react-router";
 import { Outlet, ScrollRestoration } from "@tanstack/react-router";
 import { Body, Head, Html, Meta, Scripts } from "@tanstack/start";
-import type * as React from "react";
+import * as React from "react";
+import { RouterDevtools } from "@/components/devtools";
+import type { QueryClient } from "@tanstack/react-query";
 
 // CSS
 import "@/global.css";
+import DefaultCatchBoundary from "@/components/error-boundary";
+import NotFound from "@/components/not-found";
 
-export const Route = createRootRoute({
+export const Route = createRootRouteWithContext<{
+    queryClient: QueryClient;
+}>()({
     meta: () => [
         {
             charSet: "utf-8",
@@ -20,6 +26,14 @@ export const Route = createRootRoute({
         },
     ],
     component: RootComponent,
+    errorComponent: (props) => {
+        return (
+            <RootDocument>
+                <DefaultCatchBoundary {...props} />
+            </RootDocument>
+        );
+    },
+    notFoundComponent: () => <NotFound />,
 });
 
 function RootComponent() {
@@ -39,6 +53,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             <Body>
                 {children}
                 <ScrollRestoration />
+                <React.Suspense>
+                    <RouterDevtools />
+                </React.Suspense>
                 <Scripts />
             </Body>
         </Html>

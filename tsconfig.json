@@ -5,10 +5,18 @@
         "module": "ESNext",
         "target": "ES2022",
         "skipLibCheck": true,
-        "baseUrl": "./app",
+        "baseUrl": ".",
         "paths": {
-            "@/*": ["./*"]
-        }
+            "@/*": ["./app/*"]
+        },
+        "strict": true,
+        "esModuleInterop": true,
+        "lib": ["DOM", "DOM.Iterable", "ES2022"],
+        "isolatedModules": true,
+        "resolveJsonModule": true,
+        "allowJs": true,
+        "forceConsistentCasingInFileNames": true,
+        "noEmit": true
     },
-    "include": ["app/**/*"]
+    "include": ["app/**/*.ts", "app/**/*.tsx"]
 }
