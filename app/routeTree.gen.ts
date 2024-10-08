@@ -10,83 +10,128 @@
 
 // Import Routes
 
-import { Route as rootRoute } from "./routes/__root";
-import { Route as TestImport } from "./routes/test";
-import { Route as IndexImport } from "./routes/index";
+import { Route as rootRoute } from './routes/__root'
+import { Route as IndexImport } from './routes/index'
+import { Route as berryBerryImport } from './routes/(berry)/berry'
+import { Route as berryBerryIndexImport } from './routes/(berry)/berry.index'
+import { Route as berryBerryBerryIdImport } from './routes/(berry)/berry.$berryId'
 
 // Create/Update Routes
 
-const TestRoute = TestImport.update({
-    path: "/test",
-    getParentRoute: () => rootRoute,
-} as any);
-
 const IndexRoute = IndexImport.update({
-    path: "/",
-    getParentRoute: () => rootRoute,
-} as any);
+  path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const berryBerryRoute = berryBerryImport.update({
+  path: '/berry',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const berryBerryIndexRoute = berryBerryIndexImport.update({
+  path: '/',
+  getParentRoute: () => berryBerryRoute,
+} as any)
+
+const berryBerryBerryIdRoute = berryBerryBerryIdImport.update({
+  path: '/$berryId',
+  getParentRoute: () => berryBerryRoute,
+} as any)
 
 // Populate the FileRoutesByPath interface
 
-declare module "@tanstack/react-router" {
-    interface FileRoutesByPath {
-        "/": {
-            id: "/";
-            path: "/";
-            fullPath: "/";
-            preLoaderRoute: typeof IndexImport;
-            parentRoute: typeof rootRoute;
-        };
-        "/test": {
-            id: "/test";
-            path: "/test";
-            fullPath: "/test";
-            preLoaderRoute: typeof TestImport;
-            parentRoute: typeof rootRoute;
-        };
+declare module '@tanstack/react-router' {
+  interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
     }
+    '/(berry)/berry': {
+      id: '/berry'
+      path: '/berry'
+      fullPath: '/berry'
+      preLoaderRoute: typeof berryBerryImport
+      parentRoute: typeof rootRoute
+    }
+    '/(berry)/berry/$berryId': {
+      id: '/berry/$berryId'
+      path: '/$berryId'
+      fullPath: '/berry/$berryId'
+      preLoaderRoute: typeof berryBerryBerryIdImport
+      parentRoute: typeof berryBerryImport
+    }
+    '/(berry)/berry/': {
+      id: '/berry/'
+      path: '/'
+      fullPath: '/berry/'
+      preLoaderRoute: typeof berryBerryIndexImport
+      parentRoute: typeof berryBerryImport
+    }
+  }
 }
 
 // Create and export the route tree
 
+interface berryBerryRouteChildren {
+  berryBerryBerryIdRoute: typeof berryBerryBerryIdRoute
+  berryBerryIndexRoute: typeof berryBerryIndexRoute
+}
+
+const berryBerryRouteChildren: berryBerryRouteChildren = {
+  berryBerryBerryIdRoute: berryBerryBerryIdRoute,
+  berryBerryIndexRoute: berryBerryIndexRoute,
+}
+
+const berryBerryRouteWithChildren = berryBerryRoute._addFileChildren(
+  berryBerryRouteChildren,
+)
+
 export interface FileRoutesByFullPath {
-    "/": typeof IndexRoute;
-    "/test": typeof TestRoute;
+  '/': typeof IndexRoute
+  '/berry': typeof berryBerryRouteWithChildren
+  '/berry/$berryId': typeof berryBerryBerryIdRoute
+  '/berry/': typeof berryBerryIndexRoute
 }
 
 export interface FileRoutesByTo {
-    "/": typeof IndexRoute;
-    "/test": typeof TestRoute;
+  '/': typeof IndexRoute
+  '/berry/$berryId': typeof berryBerryBerryIdRoute
+  '/berry': typeof berryBerryIndexRoute
 }
 
 export interface FileRoutesById {
-    __root__: typeof rootRoute;
-    "/": typeof IndexRoute;
-    "/test": typeof TestRoute;
+  __root__: typeof rootRoute
+  '/': typeof IndexRoute
+  '/berry': typeof berryBerryRouteWithChildren
+  '/berry/$berryId': typeof berryBerryBerryIdRoute
+  '/berry/': typeof berryBerryIndexRoute
 }
 
 export interface FileRouteTypes {
-    fileRoutesByFullPath: FileRoutesByFullPath;
-    fullPaths: "/" | "/test";
-    fileRoutesByTo: FileRoutesByTo;
-    to: "/" | "/test";
-    id: "__root__" | "/" | "/test";
-    fileRoutesById: FileRoutesById;
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths: '/' | '/berry' | '/berry/$berryId' | '/berry/'
+  fileRoutesByTo: FileRoutesByTo
+  to: '/' | '/berry/$berryId' | '/berry'
+  id: '__root__' | '/' | '/berry' | '/berry/$berryId' | '/berry/'
+  fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-    IndexRoute: typeof IndexRoute;
-    TestRoute: typeof TestRoute;
+  IndexRoute: typeof IndexRoute
+  berryBerryRoute: typeof berryBerryRouteWithChildren
 }
 
 const rootRouteChildren: RootRouteChildren = {
-    IndexRoute: IndexRoute,
-    TestRoute: TestRoute,
-};
+  IndexRoute: IndexRoute,
+  berryBerryRoute: berryBerryRouteWithChildren,
+}
 
 export const routeTree = rootRoute
-    ._addFileChildren(rootRouteChildren)
-    ._addFileTypes<FileRouteTypes>();
+  ._addFileChildren(rootRouteChildren)
+  ._addFileTypes<FileRouteTypes>()
 
 /* prettier-ignore-end */
 
@@ -97,14 +142,26 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/test"
+        "/berry"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/test": {
-      "filePath": "test.tsx"
+    "/berry": {
+      "filePath": "(berry)/berry.tsx",
+      "children": [
+        "/berry/$berryId",
+        "/berry/"
+      ]
+    },
+    "/berry/$berryId": {
+      "filePath": "(berry)/berry.$berryId.tsx",
+      "parent": "/berry"
+    },
+    "/berry/": {
+      "filePath": "(berry)/berry.index.tsx",
+      "parent": "/berry"
     }
   }
 }
