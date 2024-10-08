@@ -12,11 +12,11 @@ export default defineConfig({
         ],
         test: {
             environment: "jsdom",
-            setupFiles: ["./src/testing/vitest.setup.ts"],
+            setupFiles: ["./testing/vitest.setup.ts"],
             reporters: ["basic"],
             exclude: ["**/node_modules/**", "**/e2e/**"],
             coverage: {
-                include: ["src/**"],
+                include: ["app/**"],
             },
         },
     },

@@ -7,7 +7,7 @@
         "skipLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "@/*": ["./src/*"]
+            "@/*": ["./app/*"]
         },
         "strict": true,
         "esModuleInterop": true,
@@ -20,5 +20,5 @@
         "noUncheckedIndexedAccess": true,
         "noEmit": true
     },
-    "include": ["src/app/**/*.ts", "src/app/**/*.tsx"]
+    "include": ["app/**/*.ts", "app/**/*.tsx"]
 }
