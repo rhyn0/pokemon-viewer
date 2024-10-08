@@ -2,7 +2,13 @@
     "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
     "files": {
         "ignoreUnknown": true,
-        "ignore": [".vscode/*", "app/routeTree.gen.ts"]
+        "ignore": [
+            ".vscode/*",
+            "app/routeTree.gen.ts",
+            ".output",
+            ".vinxi",
+            "dist"
+        ]
     },
     "vcs": {
         "enabled": true,
