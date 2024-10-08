@@ -8,6 +8,7 @@ env:
 
 jobs:
   commit-checks:
+    timeout-minutes: 15
     runs-on: ubuntu-latest
     name: pre-commit-js
     steps:
@@ -20,6 +21,7 @@ jobs:
             node-version-file: ".nvmrc"
             cache: "npm"
             check-latest: true
+            cache-dependency-path: './package-lock.json'
 
       - name: Install dependencies
         run: npm ci
