@@ -1,15 +1,24 @@
 import useBerryFirmnessInfiniteQuery from "../hooks/use-list-berry-firmness";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-
 import type { BerryFirmnessRefT } from "../types";
 import { cn } from "@/lib/cn";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
+import type React from "react";
 
+type LinkProps = React.ComponentProps<typeof Link>;
 export interface FirmnessGridProps {
     className?: string;
+    to: LinkProps["to"];
+    mask?: (val: string | number) => LinkProps["mask"];
+    paramName: string;
 }
-export default function FirmnessGrid({ className }: FirmnessGridProps) {
+export default function FirmnessGrid({
+    className,
+    to,
+    mask,
+    paramName,
+}: FirmnessGridProps) {
     const berryFirmnessInfQuery = useBerryFirmnessInfiniteQuery();
 
     const berryFirmnessPages =
@@ -29,9 +38,10 @@ export default function FirmnessGrid({ className }: FirmnessGridProps) {
                     className="h-full w-full"
                 >
                     <Link
-                        to="/berry/firmness/$firmnessId"
-                        params={{ firmnessId: berryFirmness.name }}
+                        to={to}
+                        params={{ [paramName]: berryFirmness.name }}
                         preload="intent"
+                        mask={mask ? mask(berryFirmness.name) : undefined}
                     >
                         <BerryFirmnessCard berryFirmness={berryFirmness} />
                     </Link>

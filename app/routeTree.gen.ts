@@ -13,8 +13,11 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as berryBerryImport } from './routes/(berry)/berry'
+import { Route as BerryFirmnessIndexImport } from './routes/berry_/firmness.index'
 import { Route as berryBerryIndexImport } from './routes/(berry)/berry.index'
+import { Route as BerryFirmnessFirmnessIdImport } from './routes/berry_/firmness.$firmnessId'
 import { Route as berryBerryBerryIdImport } from './routes/(berry)/berry.$berryId'
+import { Route as BerryFirmnessFirmnessIdModalImport } from './routes/berry_/firmness.$firmnessId_.modal'
 
 // Create/Update Routes
 
@@ -28,15 +31,31 @@ const berryBerryRoute = berryBerryImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const BerryFirmnessIndexRoute = BerryFirmnessIndexImport.update({
+  path: '/berry/firmness/',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const berryBerryIndexRoute = berryBerryIndexImport.update({
   path: '/',
   getParentRoute: () => berryBerryRoute,
+} as any)
+
+const BerryFirmnessFirmnessIdRoute = BerryFirmnessFirmnessIdImport.update({
+  path: '/berry/firmness/$firmnessId',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const berryBerryBerryIdRoute = berryBerryBerryIdImport.update({
   path: '/$berryId',
   getParentRoute: () => berryBerryRoute,
 } as any)
+
+const BerryFirmnessFirmnessIdModalRoute =
+  BerryFirmnessFirmnessIdModalImport.update({
+    path: '/berry/firmness/$firmnessId/modal',
+    getParentRoute: () => rootRoute,
+  } as any)
 
 // Populate the FileRoutesByPath interface
 
@@ -63,12 +82,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof berryBerryBerryIdImport
       parentRoute: typeof berryBerryImport
     }
+    '/berry/firmness/$firmnessId': {
+      id: '/berry/firmness/$firmnessId'
+      path: '/berry/firmness/$firmnessId'
+      fullPath: '/berry/firmness/$firmnessId'
+      preLoaderRoute: typeof BerryFirmnessFirmnessIdImport
+      parentRoute: typeof rootRoute
+    }
     '/(berry)/berry/': {
       id: '/berry/'
       path: '/'
       fullPath: '/berry/'
       preLoaderRoute: typeof berryBerryIndexImport
       parentRoute: typeof berryBerryImport
+    }
+    '/berry/firmness/': {
+      id: '/berry/firmness/'
+      path: '/berry/firmness'
+      fullPath: '/berry/firmness'
+      preLoaderRoute: typeof BerryFirmnessIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/berry/firmness/$firmnessId/modal': {
+      id: '/berry/firmness/$firmnessId/modal'
+      path: '/berry/firmness/$firmnessId/modal'
+      fullPath: '/berry/firmness/$firmnessId/modal'
+      preLoaderRoute: typeof BerryFirmnessFirmnessIdModalImport
+      parentRoute: typeof rootRoute
     }
   }
 }
@@ -93,13 +133,19 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/berry': typeof berryBerryRouteWithChildren
   '/berry/$berryId': typeof berryBerryBerryIdRoute
+  '/berry/firmness/$firmnessId': typeof BerryFirmnessFirmnessIdRoute
   '/berry/': typeof berryBerryIndexRoute
+  '/berry/firmness': typeof BerryFirmnessIndexRoute
+  '/berry/firmness/$firmnessId/modal': typeof BerryFirmnessFirmnessIdModalRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/berry/$berryId': typeof berryBerryBerryIdRoute
+  '/berry/firmness/$firmnessId': typeof BerryFirmnessFirmnessIdRoute
   '/berry': typeof berryBerryIndexRoute
+  '/berry/firmness': typeof BerryFirmnessIndexRoute
+  '/berry/firmness/$firmnessId/modal': typeof BerryFirmnessFirmnessIdModalRoute
 }
 
 export interface FileRoutesById {
@@ -107,26 +153,56 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/berry': typeof berryBerryRouteWithChildren
   '/berry/$berryId': typeof berryBerryBerryIdRoute
+  '/berry/firmness/$firmnessId': typeof BerryFirmnessFirmnessIdRoute
   '/berry/': typeof berryBerryIndexRoute
+  '/berry/firmness/': typeof BerryFirmnessIndexRoute
+  '/berry/firmness/$firmnessId/modal': typeof BerryFirmnessFirmnessIdModalRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/berry' | '/berry/$berryId' | '/berry/'
+  fullPaths:
+    | '/'
+    | '/berry'
+    | '/berry/$berryId'
+    | '/berry/firmness/$firmnessId'
+    | '/berry/'
+    | '/berry/firmness'
+    | '/berry/firmness/$firmnessId/modal'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/berry/$berryId' | '/berry'
-  id: '__root__' | '/' | '/berry' | '/berry/$berryId' | '/berry/'
+  to:
+    | '/'
+    | '/berry/$berryId'
+    | '/berry/firmness/$firmnessId'
+    | '/berry'
+    | '/berry/firmness'
+    | '/berry/firmness/$firmnessId/modal'
+  id:
+    | '__root__'
+    | '/'
+    | '/berry'
+    | '/berry/$berryId'
+    | '/berry/firmness/$firmnessId'
+    | '/berry/'
+    | '/berry/firmness/'
+    | '/berry/firmness/$firmnessId/modal'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   berryBerryRoute: typeof berryBerryRouteWithChildren
+  BerryFirmnessFirmnessIdRoute: typeof BerryFirmnessFirmnessIdRoute
+  BerryFirmnessIndexRoute: typeof BerryFirmnessIndexRoute
+  BerryFirmnessFirmnessIdModalRoute: typeof BerryFirmnessFirmnessIdModalRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   berryBerryRoute: berryBerryRouteWithChildren,
+  BerryFirmnessFirmnessIdRoute: BerryFirmnessFirmnessIdRoute,
+  BerryFirmnessIndexRoute: BerryFirmnessIndexRoute,
+  BerryFirmnessFirmnessIdModalRoute: BerryFirmnessFirmnessIdModalRoute,
 }
 
 export const routeTree = rootRoute
@@ -142,7 +218,10 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/berry"
+        "/berry",
+        "/berry/firmness/$firmnessId",
+        "/berry/firmness/",
+        "/berry/firmness/$firmnessId/modal"
       ]
     },
     "/": {
@@ -159,9 +238,18 @@ export const routeTree = rootRoute
       "filePath": "(berry)/berry.$berryId.tsx",
       "parent": "/berry"
     },
+    "/berry/firmness/$firmnessId": {
+      "filePath": "berry_/firmness.$firmnessId.tsx"
+    },
     "/berry/": {
       "filePath": "(berry)/berry.index.tsx",
       "parent": "/berry"
+    },
+    "/berry/firmness/": {
+      "filePath": "berry_/firmness.index.tsx"
+    },
+    "/berry/firmness/$firmnessId/modal": {
+      "filePath": "berry_/firmness.$firmnessId_.modal.tsx"
     }
   }
 }
