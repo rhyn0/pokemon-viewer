@@ -9,6 +9,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 // CSS
 import "@/global.css";
+import { siteConfig } from "@/config/site";
 
 export const Route = createRootRouteWithContext<{
     queryClient: QueryClient;
@@ -22,7 +23,10 @@ export const Route = createRootRouteWithContext<{
             content: "width=device-width, initial-scale=1",
         },
         {
-            title: "TanStack Start Starter",
+            title: siteConfig.metadata.title.default,
+        },
+        {
+            description: siteConfig.metadata.description,
         },
     ],
     component: RootComponent,
