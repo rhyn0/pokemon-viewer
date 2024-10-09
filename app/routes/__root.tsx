@@ -9,6 +9,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 // CSS
 import "@/global.css";
+import { Header } from "@/components/header";
 
 export const Route = createRootRouteWithContext<{
     queryClient: QueryClient;
@@ -63,6 +64,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
                 <Meta />
             </Head>
             <Body>
+                <Header />
                 {children}
                 <ScrollRestoration />
                 <ReactQueryDevtools initialIsOpen={false} />
