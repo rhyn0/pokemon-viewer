@@ -1,3 +1,10 @@
+import type {
+    DefinedInitialDataInfiniteOptions,
+    QueryOptions,
+    UndefinedInitialDataInfiniteOptions,
+    DefaultError,
+    InfiniteData,
+} from "@tanstack/react-query";
 import { z } from "zod";
 
 export type PaginationProps = {
@@ -15,16 +22,6 @@ export type PokeApiReference<TPokeType extends string> = {
     name: string;
     url: PokeExactEndpoint<TPokeType>;
 };
-
-export interface PokePaginationResult<
-    T extends object,
-    SPokeType extends string,
-> {
-    count: number;
-    next: PokeListEndpoint<SPokeType> | null;
-    previous: PokeListEndpoint<SPokeType> | null;
-    results: T[];
-}
 
 export const pokeListEndpointZ = <T extends string>(
     pokeCategory: T,
@@ -49,3 +46,54 @@ export const pokeExactEndpointZ = <T extends string>(
             "g",
         ).test(val as string);
     }) satisfies z.ZodType<PokeExactEndpoint<T>>;
+export interface PokePaginationResult<
+    T extends object,
+    SPokeType extends string,
+> {
+    count: number;
+    next: PokeListEndpoint<SPokeType> | null;
+    previous: PokeListEndpoint<SPokeType> | null;
+    results: T[];
+}
+
+export const pokePaginationResultZ = <
+    T extends z.ZodType,
+    SPokeCategory extends string,
+>(
+    pokeType: T,
+    pokeCategory: SPokeCategory,
+): z.ZodType<PokePaginationResult<z.infer<T>, SPokeCategory>> =>
+    // @ts-expect-error - god knows why TS thinks that required params are optional
+    z.object({
+        count: z.number(),
+        next: pokeListEndpointZ(pokeCategory).nullable(),
+        previous: pokeListEndpointZ(pokeCategory).nullable(),
+        results: z.array(pokeType),
+    });
+
+export interface ExtraQueryOptionsT<
+    TFnData,
+    TQueryKey extends readonly unknown[],
+> extends Omit<
+        QueryOptions<TFnData, DefaultError, TFnData, TQueryKey>,
+        "queryKey" | "queryFn"
+    > {}
+
+export interface ExtraInfiniteQueryOptionsT<
+    TFnData,
+    TQueryKey extends readonly unknown[],
+> extends Omit<
+        DefinedInitialDataInfiniteOptions<
+            TFnData,
+            DefaultError,
+            InfiniteData<TFnData>,
+            TQueryKey
+        > &
+            UndefinedInitialDataInfiniteOptions<
+                TFnData,
+                DefaultError,
+                InfiniteData<TFnData>,
+                TQueryKey
+            >,
+        "queryKey" | "queryFn"
+    > {}
