@@ -3,7 +3,7 @@ import { berryFirmnessListZ, type BerryFirmnessListT } from "../types";
 import berryFirmnessKeys from "./keys";
 import { getOffsetParam } from "@/lib/offset-parsing";
 
-export async function getFirmness({
+export async function getFirmnessList({
     offset,
     limit = 20,
 }: { offset: number; limit?: number }): Promise<BerryFirmnessListT> {
@@ -23,7 +23,7 @@ export async function getFirmness({
 export const getBerryFirmnessInfiniteQueryOptions = infiniteQueryOptions({
     queryKey: berryFirmnessKeys.all,
     queryFn: ({ pageParam = 0 }) => {
-        return getFirmness({ offset: pageParam as number });
+        return getFirmnessList({ offset: pageParam as number });
     },
     getNextPageParam: (lastPage) => {
         if (!lastPage.next) {

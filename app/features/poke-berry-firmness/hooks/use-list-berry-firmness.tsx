@@ -9,13 +9,12 @@ type BerryFirmnessKey = typeof berryFirmnessKeys;
 type BerryFirmnessQueryKey = BerryFirmnessKey["all"];
 
 export interface useBerryFirmnessInfiniteQueryProps
-    extends ExtraInfiniteQueryOptionsT<
-        BerryFirmnessRefT,
-        BerryFirmnessQueryKey
+    extends Partial<
+        ExtraInfiniteQueryOptionsT<BerryFirmnessRefT, BerryFirmnessQueryKey>
     > {}
 export default function useBerryFirmnessInfiniteQuery({
     ...options
-}: useBerryFirmnessInfiniteQueryProps) {
+}: useBerryFirmnessInfiniteQueryProps = {}) {
     return useSuspenseInfiniteQuery({
         ...getBerryFirmnessInfiniteQueryOptions,
         ...options,
