@@ -27,6 +27,7 @@ import lansatBerry from "pokemon-sprites/sprites/items/berries/lansat-berry.png"
 import leppaBerry from "pokemon-sprites/sprites/items/berries/leppa-berry.png";
 import liechiBerry from "pokemon-sprites/sprites/items/berries/liechi-berry.png";
 import lumBerry from "pokemon-sprites/sprites/items/berries/lum-berry.png";
+import magoBerry from "pokemon-sprites/sprites/items/berries/mago-berry.png";
 import magostBerry from "pokemon-sprites/sprites/items/berries/magost-berry.png";
 import micleBerry from "pokemon-sprites/sprites/items/berries/micle-berry.png";
 import nanabBerry from "pokemon-sprites/sprites/items/berries/nanab-berry.png";
@@ -88,6 +89,7 @@ export default {
     leppa: leppaBerry,
     liechi: liechiBerry,
     lum: lumBerry,
+    mago: magoBerry,
     magost: magostBerry,
     micle: micleBerry,
     nanab: nanabBerry,
@@ -119,10 +121,3 @@ export default {
     wiki: wikiBerry,
     yache: yacheBerry,
 } as const;
-
-export async function importBerryImage(berryId: string): Promise<string> {
-    const berryImage = await import(
-        `pokemon-sprites/sprites/items/berries/${berryId}-berry.png`
-    );
-    return berryImage.default;
-}
