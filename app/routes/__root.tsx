@@ -11,6 +11,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import "@/global.css";
 import { siteConfig } from "@/config/site";
 import { Header } from "@/components/header";
+import { TailwindIndicator } from "@/components/tailwind-indicator";
 
 export const Route = createRootRouteWithContext<{
     queryClient: QueryClient;
@@ -75,6 +76,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
                 <React.Suspense>
                     <RouterDevtools />
                 </React.Suspense>
+                <TailwindIndicator />
                 <Scripts />
             </Body>
         </Html>
