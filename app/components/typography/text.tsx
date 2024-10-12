@@ -28,3 +28,11 @@ export function TypographyInlineCode({ children }: TypographyTextProps) {
         </code>
     );
 }
+
+export function TypographySmall({ children, className }: TypographyTextProps) {
+    return (
+        <small className={cn("text-sm font-medium leading-none", className)}>
+            {children}
+        </small>
+    );
+}
