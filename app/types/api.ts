@@ -42,7 +42,7 @@ export const pokeExactEndpointZ = <T extends string>(
     z.custom<`https://pokeapi.co/api/v2/${T}/${number}`>((val) => {
         const escapeCategory = pokeCategory.replace(/-/, "\\-");
         return new RegExp(
-            `https:\/\/pokeapi\.co\/api\/v2\/${escapeCategory}\/\\d+/?`,
+            `https:\/\/pokeapi\.co\/api\/v2\/${escapeCategory}\/(?:\\d+|\\w+)/?`,
             "g",
         ).test(val as string);
     }) satisfies z.ZodType<PokeExactEndpoint<T>>;

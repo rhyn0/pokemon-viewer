@@ -1,9 +1,6 @@
 import type { Config } from "tailwindcss";
-const {
-    fontFamily,
-    height: defaultHeight,
-} = require("tailwindcss/defaultTheme");
-console.log(defaultHeight);
+const { fontFamily } = require("tailwindcss/defaultTheme");
+
 const config = {
     darkMode: ["class"],
     content: ["app/**/*.{ts,tsx}"],
