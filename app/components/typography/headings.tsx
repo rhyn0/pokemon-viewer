@@ -5,9 +5,14 @@ export type TypographyHeadingProps = React.PropsWithChildren<{
     className?: string;
 }>;
 
-export function TypographyH1({ children }: TypographyHeadingProps) {
+export function TypographyH1({ children, className }: TypographyHeadingProps) {
     return (
-        <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+        <h1
+            className={cn(
+                "scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl",
+                className,
+            )}
+        >
             {children}
         </h1>
     );
