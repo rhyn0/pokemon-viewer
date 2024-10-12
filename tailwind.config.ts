@@ -1,7 +1,10 @@
 import type { Config } from "tailwindcss";
-const { fontFamily } = require("tailwindcss/defaultTheme");
-
-export default {
+const {
+    fontFamily,
+    height: defaultHeight,
+} = require("tailwindcss/defaultTheme");
+console.log(defaultHeight);
+const config = {
     darkMode: ["class"],
     content: ["app/**/*.{ts,tsx}"],
     theme: {
@@ -13,6 +16,10 @@ export default {
             },
         },
         extend: {
+            height: {
+                screen: "calc(100vh - var(--header-height))",
+                header: "var(--header-height)",
+            },
             colors: {
                 border: "hsl(var(--border))",
                 input: "hsl(var(--input))",
@@ -74,3 +81,5 @@ export default {
     },
     plugins: [require("tailwindcss-animate")],
 } satisfies Config;
+
+export default config;
