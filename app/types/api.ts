@@ -97,3 +97,8 @@ export interface ExtraInfiniteQueryOptionsT<
             >,
         "queryKey" | "queryFn"
     > {}
+export type LanguageRefT = PokeApiReference<"language">;
+export const languageRefZ = z.object({
+    name: z.string(),
+    url: pokeExactEndpointZ("language"),
+}) satisfies z.ZodType<LanguageRefT>;
