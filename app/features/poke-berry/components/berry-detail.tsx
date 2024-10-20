@@ -2,7 +2,7 @@
 
 import React from "react";
 import type { PokeBerryT } from "../types";
-import { useContextErrorIfNull } from "@/lib/use-context-no-null";
+import { useContextErrorIfNull } from "@/hooks/use-context-no-null";
 import berryImages from "../api/berry-images";
 import { cn } from "@/lib/cn";
 import { Label } from "@/components/ui/label";
