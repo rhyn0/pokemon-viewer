@@ -5,7 +5,7 @@ import type {
     AbilityFlavorTextT,
     AbilityEffectChangeT,
 } from "../types";
-import { useContextErrorIfNull } from "@/lib/use-context-no-null";
+import { useContextErrorIfNull } from "@/hooks/use-context-no-null";
 import toProperCase from "@/lib/to-proper";
 import { TypographyBlockquote } from "@/components/typography/text";
 import { TypographyH4 } from "@/components/typography/headings";
