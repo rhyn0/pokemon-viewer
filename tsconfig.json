@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "types": ["vitest/globals"],
         "jsx": "react-jsx",
         "moduleResolution": "Bundler",
         "module": "ESNext",

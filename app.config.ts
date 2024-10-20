@@ -1,23 +1,12 @@
 import { defineConfig } from "@tanstack/start/config";
 import viteTsConfigPaths from "vite-tsconfig-paths";
 
+export const viteConfig = {
+    plugins: [viteTsConfigPaths()],
+} as const;
 export default defineConfig({
     vite: {
         // @ts-expect-error - some odd any typings
-        plugins: () => [
-            // this is the plugin that enables path aliases
-            viteTsConfigPaths({
-                projects: ["./tsconfig.json"],
-            }),
-        ],
-        test: {
-            environment: "jsdom",
-            setupFiles: ["./testing/vitest.setup.ts"],
-            reporters: ["basic"],
-            exclude: ["**/node_modules/**", "**/e2e/**"],
-            coverage: {
-                include: ["app/**"],
-            },
-        },
+        plugins: () => viteConfig.plugins,
     },
 });
