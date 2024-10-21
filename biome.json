@@ -7,7 +7,8 @@
             "app/routeTree.gen.ts",
             ".output",
             ".vinxi",
-            "dist"
+            "dist",
+            "coverage"
         ]
     },
     "vcs": {
