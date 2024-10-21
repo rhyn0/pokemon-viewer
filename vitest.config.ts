@@ -9,8 +9,11 @@ export default defineConfig({
         reporters: ["basic"],
         exclude: ["**/node_modules/**", "**/e2e/**"],
         coverage: {
+            enabled: true,
+            provider: "istanbul",
             include: ["app/**"],
         },
+        include: ["testing/**/*.test.ts"],
         globals: true,
     },
 });
