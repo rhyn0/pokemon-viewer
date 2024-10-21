@@ -3,7 +3,7 @@ import InfiniteAbilityList from "@/features/pokemon-abilities/components/infinit
 import { getAbilityInfiniteQueryOptions } from "@/features/pokemon-abilities/api/list-abilities";
 import { TypographyH2 } from "@/components/typography/headings";
 
-export const Route = createFileRoute("/(pokemon)/(ability)/pokemon/ability")({
+export const Route = createFileRoute("/(pokemon)/pokemon/(ability)/ability")({
     component: () => <AbilityListPage />,
     loader: ({ context: { queryClient } }) =>
         queryClient.ensureInfiniteQueryData(getAbilityInfiniteQueryOptions),
