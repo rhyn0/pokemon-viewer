@@ -20,8 +20,8 @@
         "fix:lint": "biome lint --write ./",
         "test": "vitest run",
         "test:watch": "vitest",
-        "storybook": "storybook dev -p 6006",
-        "build-storybook": "storybook build"
+        "storybook": "storybook dev -p 6006 -c testing/.storybook",
+        "build-storybook": "storybook build -c testing/.storybook"
     },
     "keywords": [],
     "author": "",
