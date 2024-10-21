@@ -1,9 +1,8 @@
 import type {
-    DefinedInitialDataInfiniteOptions,
     QueryOptions,
-    UndefinedInitialDataInfiniteOptions,
     DefaultError,
     InfiniteData,
+    UseSuspenseInfiniteQueryOptions,
 } from "@tanstack/react-query";
 import { z } from "zod";
 
@@ -82,19 +81,16 @@ export interface ExtraQueryOptionsT<
 export interface ExtraInfiniteQueryOptionsT<
     TFnData,
     TQueryKey extends readonly unknown[],
+    TPaginationParam = number,
 > extends Omit<
-        DefinedInitialDataInfiniteOptions<
+        UseSuspenseInfiniteQueryOptions<
             TFnData,
             DefaultError,
             InfiniteData<TFnData>,
-            TQueryKey
-        > &
-            UndefinedInitialDataInfiniteOptions<
-                TFnData,
-                DefaultError,
-                InfiniteData<TFnData>,
-                TQueryKey
-            >,
+            TFnData,
+            TQueryKey,
+            TPaginationParam
+        >,
         "queryKey" | "queryFn"
     > {}
 export type LanguageRefT = PokeApiReference<"language">;
