@@ -12,6 +12,8 @@ export default defineConfig({
             enabled: true,
             provider: "istanbul",
             include: ["app/**"],
+            reporter: ["text-summary", "html"],
+            skipFull: true,
         },
         include: ["testing/**/*.test.ts"],
         globals: true,
