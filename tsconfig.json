@@ -32,7 +32,10 @@
     "include": [
         "app/**/*.ts",
         "app/**/*.tsx",
+        ".storybook/**/*.ts",
+        ".storybook/**/*.tsx",
         "testing/**/*.ts",
-        "testing/**/*.tsx"
+        "testing/**/*.tsx",
+        ".storybook/preview.tsx"
     ]
 }
