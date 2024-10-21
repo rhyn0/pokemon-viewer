@@ -14,7 +14,7 @@ export function Header({ className }: HeaderProps) {
         <header className={cn("bg-secondary align-middle h-header", className)}>
             <div className="container flex">
                 <div className="flex space-x-8 md:justify-start">
-                    <div>
+                    <div className="align-middle flex">
                         <Link
                             to="/"
                             className="flex items-center space-x-2"
