@@ -18,15 +18,16 @@ import { Route as berryBerryIndexImport } from './routes/(berry)/berry.index'
 import { Route as BerryFirmnessFirmnessIdImport } from './routes/berry_/firmness.$firmnessId'
 import { Route as berryBerryBerryIdImport } from './routes/(berry)/berry.$berryId'
 import { Route as BerryflavorFlavorIndexImport } from './routes/berry_/(flavor)/flavor.index'
-import { Route as pokemonPokemonCharacteristicIndexImport } from './routes/(pokemon)/pokemon_.characteristic/index'
+import { Route as pokemonPokemonEggGroupIndexImport } from './routes/(pokemon)/pokemon_/egg-group/index'
+import { Route as pokemonPokemonCharacteristicIndexImport } from './routes/(pokemon)/pokemon_/characteristic/index'
 import { Route as BerryFirmnessFirmnessIdModalImport } from './routes/berry_/firmness.$firmnessId_.modal'
 import { Route as BerryflavorFlavorFlavorIdImport } from './routes/berry_/(flavor)/flavor.$flavorId'
-import { Route as pokemonPokemonCharacteristicCharacteristicIdImport } from './routes/(pokemon)/pokemon_.characteristic/$characteristicId'
-import { Route as pokemonabilityPokemonAbilityImport } from './routes/(pokemon)/(ability)/pokemon_/ability'
-import { Route as pokemonabilityPokemonAbilityIndexImport } from './routes/(pokemon)/(ability)/pokemon_/ability.index'
+import { Route as pokemonPokemonCharacteristicCharacteristicIdImport } from './routes/(pokemon)/pokemon_/characteristic/$characteristicId'
+import { Route as pokemonPokemonabilityAbilityImport } from './routes/(pokemon)/pokemon_/(ability)/ability'
+import { Route as pokemonPokemonabilityAbilityIndexImport } from './routes/(pokemon)/pokemon_/(ability)/ability.index'
 import { Route as BerryflavorFlavorFlavorIdModalImport } from './routes/berry_/(flavor)/flavor.$flavorId_.modal'
-import { Route as pokemonPokemonCharacteristicCharacteristicIdModalImport } from './routes/(pokemon)/pokemon_.characteristic/$characteristicId_.modal'
-import { Route as pokemonabilityPokemonAbilityAbilityIdImport } from './routes/(pokemon)/(ability)/pokemon_/ability.$abilityId'
+import { Route as pokemonPokemonCharacteristicCharacteristicIdModalImport } from './routes/(pokemon)/pokemon_/characteristic/$characteristicId_.modal'
+import { Route as pokemonPokemonabilityAbilityAbilityIdImport } from './routes/(pokemon)/pokemon_/(ability)/ability.$abilityId'
 
 // Create/Update Routes
 
@@ -65,6 +66,12 @@ const BerryflavorFlavorIndexRoute = BerryflavorFlavorIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const pokemonPokemonEggGroupIndexRoute =
+  pokemonPokemonEggGroupIndexImport.update({
+    path: '/pokemon/egg-group/',
+    getParentRoute: () => rootRoute,
+  } as any)
+
 const pokemonPokemonCharacteristicIndexRoute =
   pokemonPokemonCharacteristicIndexImport.update({
     path: '/pokemon/characteristic/',
@@ -88,16 +95,16 @@ const pokemonPokemonCharacteristicCharacteristicIdRoute =
     getParentRoute: () => rootRoute,
   } as any)
 
-const pokemonabilityPokemonAbilityRoute =
-  pokemonabilityPokemonAbilityImport.update({
+const pokemonPokemonabilityAbilityRoute =
+  pokemonPokemonabilityAbilityImport.update({
     path: '/pokemon/ability',
     getParentRoute: () => rootRoute,
   } as any)
 
-const pokemonabilityPokemonAbilityIndexRoute =
-  pokemonabilityPokemonAbilityIndexImport.update({
+const pokemonPokemonabilityAbilityIndexRoute =
+  pokemonPokemonabilityAbilityIndexImport.update({
     path: '/',
-    getParentRoute: () => pokemonabilityPokemonAbilityRoute,
+    getParentRoute: () => pokemonPokemonabilityAbilityRoute,
   } as any)
 
 const BerryflavorFlavorFlavorIdModalRoute =
@@ -112,10 +119,10 @@ const pokemonPokemonCharacteristicCharacteristicIdModalRoute =
     getParentRoute: () => rootRoute,
   } as any)
 
-const pokemonabilityPokemonAbilityAbilityIdRoute =
-  pokemonabilityPokemonAbilityAbilityIdImport.update({
+const pokemonPokemonabilityAbilityAbilityIdRoute =
+  pokemonPokemonabilityAbilityAbilityIdImport.update({
     path: '/$abilityId',
-    getParentRoute: () => pokemonabilityPokemonAbilityRoute,
+    getParentRoute: () => pokemonPokemonabilityAbilityRoute,
   } as any)
 
 // Populate the FileRoutesByPath interface
@@ -164,11 +171,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BerryFirmnessIndexImport
       parentRoute: typeof rootRoute
     }
-    '/(pokemon)/(ability)/pokemon/ability': {
+    '/(pokemon)/pokemon/(ability)/ability': {
       id: '/pokemon/ability'
       path: '/pokemon/ability'
       fullPath: '/pokemon/ability'
-      preLoaderRoute: typeof pokemonabilityPokemonAbilityImport
+      preLoaderRoute: typeof pokemonPokemonabilityAbilityImport
       parentRoute: typeof rootRoute
     }
     '/(pokemon)/pokemon/characteristic/$characteristicId': {
@@ -199,6 +206,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof pokemonPokemonCharacteristicIndexImport
       parentRoute: typeof rootRoute
     }
+    '/(pokemon)/pokemon/egg-group/': {
+      id: '/pokemon/egg-group/'
+      path: '/pokemon/egg-group'
+      fullPath: '/pokemon/egg-group'
+      preLoaderRoute: typeof pokemonPokemonEggGroupIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/berry/(flavor)/flavor/': {
       id: '/berry/flavor/'
       path: '/berry/flavor'
@@ -206,12 +220,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BerryflavorFlavorIndexImport
       parentRoute: typeof rootRoute
     }
-    '/(pokemon)/(ability)/pokemon/ability/$abilityId': {
+    '/(pokemon)/pokemon/(ability)/ability/$abilityId': {
       id: '/pokemon/ability/$abilityId'
       path: '/$abilityId'
       fullPath: '/pokemon/ability/$abilityId'
-      preLoaderRoute: typeof pokemonabilityPokemonAbilityAbilityIdImport
-      parentRoute: typeof pokemonabilityPokemonAbilityImport
+      preLoaderRoute: typeof pokemonPokemonabilityAbilityAbilityIdImport
+      parentRoute: typeof pokemonPokemonabilityAbilityImport
     }
     '/(pokemon)/pokemon/characteristic/$characteristicId/modal': {
       id: '/pokemon/characteristic/$characteristicId/modal'
@@ -227,12 +241,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BerryflavorFlavorFlavorIdModalImport
       parentRoute: typeof rootRoute
     }
-    '/(pokemon)/(ability)/pokemon/ability/': {
+    '/(pokemon)/pokemon/(ability)/ability/': {
       id: '/pokemon/ability/'
       path: '/'
       fullPath: '/pokemon/ability/'
-      preLoaderRoute: typeof pokemonabilityPokemonAbilityIndexImport
-      parentRoute: typeof pokemonabilityPokemonAbilityImport
+      preLoaderRoute: typeof pokemonPokemonabilityAbilityIndexImport
+      parentRoute: typeof pokemonPokemonabilityAbilityImport
     }
   }
 }
@@ -253,22 +267,22 @@ const berryBerryRouteWithChildren = berryBerryRoute._addFileChildren(
   berryBerryRouteChildren,
 )
 
-interface pokemonabilityPokemonAbilityRouteChildren {
-  pokemonabilityPokemonAbilityAbilityIdRoute: typeof pokemonabilityPokemonAbilityAbilityIdRoute
-  pokemonabilityPokemonAbilityIndexRoute: typeof pokemonabilityPokemonAbilityIndexRoute
+interface pokemonPokemonabilityAbilityRouteChildren {
+  pokemonPokemonabilityAbilityAbilityIdRoute: typeof pokemonPokemonabilityAbilityAbilityIdRoute
+  pokemonPokemonabilityAbilityIndexRoute: typeof pokemonPokemonabilityAbilityIndexRoute
 }
 
-const pokemonabilityPokemonAbilityRouteChildren: pokemonabilityPokemonAbilityRouteChildren =
+const pokemonPokemonabilityAbilityRouteChildren: pokemonPokemonabilityAbilityRouteChildren =
   {
-    pokemonabilityPokemonAbilityAbilityIdRoute:
-      pokemonabilityPokemonAbilityAbilityIdRoute,
-    pokemonabilityPokemonAbilityIndexRoute:
-      pokemonabilityPokemonAbilityIndexRoute,
+    pokemonPokemonabilityAbilityAbilityIdRoute:
+      pokemonPokemonabilityAbilityAbilityIdRoute,
+    pokemonPokemonabilityAbilityIndexRoute:
+      pokemonPokemonabilityAbilityIndexRoute,
   }
 
-const pokemonabilityPokemonAbilityRouteWithChildren =
-  pokemonabilityPokemonAbilityRoute._addFileChildren(
-    pokemonabilityPokemonAbilityRouteChildren,
+const pokemonPokemonabilityAbilityRouteWithChildren =
+  pokemonPokemonabilityAbilityRoute._addFileChildren(
+    pokemonPokemonabilityAbilityRouteChildren,
   )
 
 export interface FileRoutesByFullPath {
@@ -278,16 +292,17 @@ export interface FileRoutesByFullPath {
   '/berry/firmness/$firmnessId': typeof BerryFirmnessFirmnessIdRoute
   '/berry/': typeof berryBerryIndexRoute
   '/berry/firmness': typeof BerryFirmnessIndexRoute
-  '/pokemon/ability': typeof pokemonabilityPokemonAbilityRouteWithChildren
+  '/pokemon/ability': typeof pokemonPokemonabilityAbilityRouteWithChildren
   '/pokemon/characteristic/$characteristicId': typeof pokemonPokemonCharacteristicCharacteristicIdRoute
   '/berry/flavor/$flavorId': typeof BerryflavorFlavorFlavorIdRoute
   '/berry/firmness/$firmnessId/modal': typeof BerryFirmnessFirmnessIdModalRoute
   '/pokemon/characteristic': typeof pokemonPokemonCharacteristicIndexRoute
+  '/pokemon/egg-group': typeof pokemonPokemonEggGroupIndexRoute
   '/berry/flavor': typeof BerryflavorFlavorIndexRoute
-  '/pokemon/ability/$abilityId': typeof pokemonabilityPokemonAbilityAbilityIdRoute
+  '/pokemon/ability/$abilityId': typeof pokemonPokemonabilityAbilityAbilityIdRoute
   '/pokemon/characteristic/$characteristicId/modal': typeof pokemonPokemonCharacteristicCharacteristicIdModalRoute
   '/berry/flavor/$flavorId/modal': typeof BerryflavorFlavorFlavorIdModalRoute
-  '/pokemon/ability/': typeof pokemonabilityPokemonAbilityIndexRoute
+  '/pokemon/ability/': typeof pokemonPokemonabilityAbilityIndexRoute
 }
 
 export interface FileRoutesByTo {
@@ -300,11 +315,12 @@ export interface FileRoutesByTo {
   '/berry/flavor/$flavorId': typeof BerryflavorFlavorFlavorIdRoute
   '/berry/firmness/$firmnessId/modal': typeof BerryFirmnessFirmnessIdModalRoute
   '/pokemon/characteristic': typeof pokemonPokemonCharacteristicIndexRoute
+  '/pokemon/egg-group': typeof pokemonPokemonEggGroupIndexRoute
   '/berry/flavor': typeof BerryflavorFlavorIndexRoute
-  '/pokemon/ability/$abilityId': typeof pokemonabilityPokemonAbilityAbilityIdRoute
+  '/pokemon/ability/$abilityId': typeof pokemonPokemonabilityAbilityAbilityIdRoute
   '/pokemon/characteristic/$characteristicId/modal': typeof pokemonPokemonCharacteristicCharacteristicIdModalRoute
   '/berry/flavor/$flavorId/modal': typeof BerryflavorFlavorFlavorIdModalRoute
-  '/pokemon/ability': typeof pokemonabilityPokemonAbilityIndexRoute
+  '/pokemon/ability': typeof pokemonPokemonabilityAbilityIndexRoute
 }
 
 export interface FileRoutesById {
@@ -315,16 +331,17 @@ export interface FileRoutesById {
   '/berry/firmness/$firmnessId': typeof BerryFirmnessFirmnessIdRoute
   '/berry/': typeof berryBerryIndexRoute
   '/berry/firmness/': typeof BerryFirmnessIndexRoute
-  '/pokemon/ability': typeof pokemonabilityPokemonAbilityRouteWithChildren
+  '/pokemon/ability': typeof pokemonPokemonabilityAbilityRouteWithChildren
   '/pokemon/characteristic/$characteristicId': typeof pokemonPokemonCharacteristicCharacteristicIdRoute
   '/berry/flavor/$flavorId': typeof BerryflavorFlavorFlavorIdRoute
   '/berry/firmness/$firmnessId/modal': typeof BerryFirmnessFirmnessIdModalRoute
   '/pokemon/characteristic/': typeof pokemonPokemonCharacteristicIndexRoute
+  '/pokemon/egg-group/': typeof pokemonPokemonEggGroupIndexRoute
   '/berry/flavor/': typeof BerryflavorFlavorIndexRoute
-  '/pokemon/ability/$abilityId': typeof pokemonabilityPokemonAbilityAbilityIdRoute
+  '/pokemon/ability/$abilityId': typeof pokemonPokemonabilityAbilityAbilityIdRoute
   '/pokemon/characteristic/$characteristicId/modal': typeof pokemonPokemonCharacteristicCharacteristicIdModalRoute
   '/berry/flavor/$flavorId/modal': typeof BerryflavorFlavorFlavorIdModalRoute
-  '/pokemon/ability/': typeof pokemonabilityPokemonAbilityIndexRoute
+  '/pokemon/ability/': typeof pokemonPokemonabilityAbilityIndexRoute
 }
 
 export interface FileRouteTypes {
@@ -341,6 +358,7 @@ export interface FileRouteTypes {
     | '/berry/flavor/$flavorId'
     | '/berry/firmness/$firmnessId/modal'
     | '/pokemon/characteristic'
+    | '/pokemon/egg-group'
     | '/berry/flavor'
     | '/pokemon/ability/$abilityId'
     | '/pokemon/characteristic/$characteristicId/modal'
@@ -357,6 +375,7 @@ export interface FileRouteTypes {
     | '/berry/flavor/$flavorId'
     | '/berry/firmness/$firmnessId/modal'
     | '/pokemon/characteristic'
+    | '/pokemon/egg-group'
     | '/berry/flavor'
     | '/pokemon/ability/$abilityId'
     | '/pokemon/characteristic/$characteristicId/modal'
@@ -375,6 +394,7 @@ export interface FileRouteTypes {
     | '/berry/flavor/$flavorId'
     | '/berry/firmness/$firmnessId/modal'
     | '/pokemon/characteristic/'
+    | '/pokemon/egg-group/'
     | '/berry/flavor/'
     | '/pokemon/ability/$abilityId'
     | '/pokemon/characteristic/$characteristicId/modal'
@@ -388,11 +408,12 @@ export interface RootRouteChildren {
   berryBerryRoute: typeof berryBerryRouteWithChildren
   BerryFirmnessFirmnessIdRoute: typeof BerryFirmnessFirmnessIdRoute
   BerryFirmnessIndexRoute: typeof BerryFirmnessIndexRoute
-  pokemonabilityPokemonAbilityRoute: typeof pokemonabilityPokemonAbilityRouteWithChildren
+  pokemonPokemonabilityAbilityRoute: typeof pokemonPokemonabilityAbilityRouteWithChildren
   pokemonPokemonCharacteristicCharacteristicIdRoute: typeof pokemonPokemonCharacteristicCharacteristicIdRoute
   BerryflavorFlavorFlavorIdRoute: typeof BerryflavorFlavorFlavorIdRoute
   BerryFirmnessFirmnessIdModalRoute: typeof BerryFirmnessFirmnessIdModalRoute
   pokemonPokemonCharacteristicIndexRoute: typeof pokemonPokemonCharacteristicIndexRoute
+  pokemonPokemonEggGroupIndexRoute: typeof pokemonPokemonEggGroupIndexRoute
   BerryflavorFlavorIndexRoute: typeof BerryflavorFlavorIndexRoute
   pokemonPokemonCharacteristicCharacteristicIdModalRoute: typeof pokemonPokemonCharacteristicCharacteristicIdModalRoute
   BerryflavorFlavorFlavorIdModalRoute: typeof BerryflavorFlavorFlavorIdModalRoute
@@ -403,14 +424,15 @@ const rootRouteChildren: RootRouteChildren = {
   berryBerryRoute: berryBerryRouteWithChildren,
   BerryFirmnessFirmnessIdRoute: BerryFirmnessFirmnessIdRoute,
   BerryFirmnessIndexRoute: BerryFirmnessIndexRoute,
-  pokemonabilityPokemonAbilityRoute:
-    pokemonabilityPokemonAbilityRouteWithChildren,
+  pokemonPokemonabilityAbilityRoute:
+    pokemonPokemonabilityAbilityRouteWithChildren,
   pokemonPokemonCharacteristicCharacteristicIdRoute:
     pokemonPokemonCharacteristicCharacteristicIdRoute,
   BerryflavorFlavorFlavorIdRoute: BerryflavorFlavorFlavorIdRoute,
   BerryFirmnessFirmnessIdModalRoute: BerryFirmnessFirmnessIdModalRoute,
   pokemonPokemonCharacteristicIndexRoute:
     pokemonPokemonCharacteristicIndexRoute,
+  pokemonPokemonEggGroupIndexRoute: pokemonPokemonEggGroupIndexRoute,
   BerryflavorFlavorIndexRoute: BerryflavorFlavorIndexRoute,
   pokemonPokemonCharacteristicCharacteristicIdModalRoute:
     pokemonPokemonCharacteristicCharacteristicIdModalRoute,
@@ -438,6 +460,7 @@ export const routeTree = rootRoute
         "/berry/flavor/$flavorId",
         "/berry/firmness/$firmnessId/modal",
         "/pokemon/characteristic/",
+        "/pokemon/egg-group/",
         "/berry/flavor/",
         "/pokemon/characteristic/$characteristicId/modal",
         "/berry/flavor/$flavorId/modal"
@@ -468,14 +491,14 @@ export const routeTree = rootRoute
       "filePath": "berry_/firmness.index.tsx"
     },
     "/pokemon/ability": {
-      "filePath": "(pokemon)/(ability)/pokemon_/ability.tsx",
+      "filePath": "(pokemon)/pokemon_/(ability)/ability.tsx",
       "children": [
         "/pokemon/ability/$abilityId",
         "/pokemon/ability/"
       ]
     },
     "/pokemon/characteristic/$characteristicId": {
-      "filePath": "(pokemon)/pokemon_.characteristic/$characteristicId.tsx"
+      "filePath": "(pokemon)/pokemon_/characteristic/$characteristicId.tsx"
     },
     "/berry/flavor/$flavorId": {
       "filePath": "berry_/(flavor)/flavor.$flavorId.tsx"
@@ -484,23 +507,26 @@ export const routeTree = rootRoute
       "filePath": "berry_/firmness.$firmnessId_.modal.tsx"
     },
     "/pokemon/characteristic/": {
-      "filePath": "(pokemon)/pokemon_.characteristic/index.tsx"
+      "filePath": "(pokemon)/pokemon_/characteristic/index.tsx"
+    },
+    "/pokemon/egg-group/": {
+      "filePath": "(pokemon)/pokemon_/egg-group/index.tsx"
     },
     "/berry/flavor/": {
       "filePath": "berry_/(flavor)/flavor.index.tsx"
     },
     "/pokemon/ability/$abilityId": {
-      "filePath": "(pokemon)/(ability)/pokemon_/ability.$abilityId.tsx",
+      "filePath": "(pokemon)/pokemon_/(ability)/ability.$abilityId.tsx",
       "parent": "/pokemon/ability"
     },
     "/pokemon/characteristic/$characteristicId/modal": {
-      "filePath": "(pokemon)/pokemon_.characteristic/$characteristicId_.modal.tsx"
+      "filePath": "(pokemon)/pokemon_/characteristic/$characteristicId_.modal.tsx"
     },
     "/berry/flavor/$flavorId/modal": {
       "filePath": "berry_/(flavor)/flavor.$flavorId_.modal.tsx"
     },
     "/pokemon/ability/": {
-      "filePath": "(pokemon)/(ability)/pokemon_/ability.index.tsx",
+      "filePath": "(pokemon)/pokemon_/(ability)/ability.index.tsx",
       "parent": "/pokemon/ability"
     }
   }
