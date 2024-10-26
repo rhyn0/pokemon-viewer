@@ -6,14 +6,10 @@ import {
     type PokePaginationResult,
     type LanguageRefT,
     languageRefZ,
+    type PokemonSpeciesRefT,
 } from "@/types/api";
 
 const endpointCollectionName = "egg-group" as const;
-
-type PokemonSpeciesRefT = {
-    name: string;
-    url: PokeExactEndpoint<"pokemon-species">;
-};
 
 export type PokeEggGroupT = {
     id: number;
