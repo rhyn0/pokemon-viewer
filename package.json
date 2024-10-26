@@ -20,6 +20,7 @@
         "fix:lint": "biome lint --write ./",
         "test": "vitest run",
         "test:watch": "vitest",
+        "plop": "plop",
         "storybook": "storybook dev -p 6006 -c testing/.storybook",
         "build-storybook": "storybook build -c testing/.storybook",
         "test-storybook": "test-storybook -c testing/.storybook"
@@ -76,6 +77,7 @@
         "autoprefixer": "^10.4.20",
         "husky": "^9.1.6",
         "jsdom": "^25.0.1",
+        "plop": "^4.0.1",
         "postcss": "^8.4.47",
         "storybook": "^8.3.6",
         "tailwindcss": "^3.4.13",
