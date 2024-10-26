@@ -24,10 +24,12 @@ import { Route as BerryFirmnessFirmnessIdModalImport } from './routes/berry_/fir
 import { Route as BerryflavorFlavorFlavorIdImport } from './routes/berry_/(flavor)/flavor.$flavorId'
 import { Route as pokemonPokemonEggGroupEggGroupIdImport } from './routes/(pokemon)/pokemon_/egg-group/$eggGroupId'
 import { Route as pokemonPokemonCharacteristicCharacteristicIdImport } from './routes/(pokemon)/pokemon_/characteristic/$characteristicId'
+import { Route as pokemonPokemongrowthRateGrowthRateImport } from './routes/(pokemon)/pokemon_/(growth-rate)/growth-rate'
 import { Route as pokemonPokemonabilityAbilityImport } from './routes/(pokemon)/pokemon_/(ability)/ability'
 import { Route as pokemonPokemonabilityAbilityIndexImport } from './routes/(pokemon)/pokemon_/(ability)/ability.index'
 import { Route as BerryflavorFlavorFlavorIdModalImport } from './routes/berry_/(flavor)/flavor.$flavorId_.modal'
 import { Route as pokemonPokemonCharacteristicCharacteristicIdModalImport } from './routes/(pokemon)/pokemon_/characteristic/$characteristicId_.modal'
+import { Route as pokemonPokemongrowthRateGrowthRateRateIdImport } from './routes/(pokemon)/pokemon_/(growth-rate)/growth-rate.$rateId'
 import { Route as pokemonPokemonabilityAbilityAbilityIdImport } from './routes/(pokemon)/pokemon_/(ability)/ability.$abilityId'
 
 // Create/Update Routes
@@ -102,6 +104,12 @@ const pokemonPokemonCharacteristicCharacteristicIdRoute =
     getParentRoute: () => rootRoute,
   } as any)
 
+const pokemonPokemongrowthRateGrowthRateRoute =
+  pokemonPokemongrowthRateGrowthRateImport.update({
+    path: '/pokemon/growth-rate',
+    getParentRoute: () => rootRoute,
+  } as any)
+
 const pokemonPokemonabilityAbilityRoute =
   pokemonPokemonabilityAbilityImport.update({
     path: '/pokemon/ability',
@@ -124,6 +132,12 @@ const pokemonPokemonCharacteristicCharacteristicIdModalRoute =
   pokemonPokemonCharacteristicCharacteristicIdModalImport.update({
     path: '/pokemon/characteristic/$characteristicId/modal',
     getParentRoute: () => rootRoute,
+  } as any)
+
+const pokemonPokemongrowthRateGrowthRateRateIdRoute =
+  pokemonPokemongrowthRateGrowthRateRateIdImport.update({
+    path: '/$rateId',
+    getParentRoute: () => pokemonPokemongrowthRateGrowthRateRoute,
   } as any)
 
 const pokemonPokemonabilityAbilityAbilityIdRoute =
@@ -185,6 +199,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof pokemonPokemonabilityAbilityImport
       parentRoute: typeof rootRoute
     }
+    '/(pokemon)/pokemon/(growth-rate)/growth-rate': {
+      id: '/pokemon/growth-rate'
+      path: '/pokemon/growth-rate'
+      fullPath: '/pokemon/growth-rate'
+      preLoaderRoute: typeof pokemonPokemongrowthRateGrowthRateImport
+      parentRoute: typeof rootRoute
+    }
     '/(pokemon)/pokemon/characteristic/$characteristicId': {
       id: '/pokemon/characteristic/$characteristicId'
       path: '/pokemon/characteristic/$characteristicId'
@@ -240,6 +261,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/pokemon/ability/$abilityId'
       preLoaderRoute: typeof pokemonPokemonabilityAbilityAbilityIdImport
       parentRoute: typeof pokemonPokemonabilityAbilityImport
+    }
+    '/(pokemon)/pokemon/(growth-rate)/growth-rate/$rateId': {
+      id: '/pokemon/growth-rate/$rateId'
+      path: '/$rateId'
+      fullPath: '/pokemon/growth-rate/$rateId'
+      preLoaderRoute: typeof pokemonPokemongrowthRateGrowthRateRateIdImport
+      parentRoute: typeof pokemonPokemongrowthRateGrowthRateImport
     }
     '/(pokemon)/pokemon/characteristic/$characteristicId/modal': {
       id: '/pokemon/characteristic/$characteristicId/modal'
@@ -299,6 +327,21 @@ const pokemonPokemonabilityAbilityRouteWithChildren =
     pokemonPokemonabilityAbilityRouteChildren,
   )
 
+interface pokemonPokemongrowthRateGrowthRateRouteChildren {
+  pokemonPokemongrowthRateGrowthRateRateIdRoute: typeof pokemonPokemongrowthRateGrowthRateRateIdRoute
+}
+
+const pokemonPokemongrowthRateGrowthRateRouteChildren: pokemonPokemongrowthRateGrowthRateRouteChildren =
+  {
+    pokemonPokemongrowthRateGrowthRateRateIdRoute:
+      pokemonPokemongrowthRateGrowthRateRateIdRoute,
+  }
+
+const pokemonPokemongrowthRateGrowthRateRouteWithChildren =
+  pokemonPokemongrowthRateGrowthRateRoute._addFileChildren(
+    pokemonPokemongrowthRateGrowthRateRouteChildren,
+  )
+
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/berry': typeof berryBerryRouteWithChildren
@@ -307,6 +350,7 @@ export interface FileRoutesByFullPath {
   '/berry/': typeof berryBerryIndexRoute
   '/berry/firmness': typeof BerryFirmnessIndexRoute
   '/pokemon/ability': typeof pokemonPokemonabilityAbilityRouteWithChildren
+  '/pokemon/growth-rate': typeof pokemonPokemongrowthRateGrowthRateRouteWithChildren
   '/pokemon/characteristic/$characteristicId': typeof pokemonPokemonCharacteristicCharacteristicIdRoute
   '/pokemon/egg-group/$eggGroupId': typeof pokemonPokemonEggGroupEggGroupIdRoute
   '/berry/flavor/$flavorId': typeof BerryflavorFlavorFlavorIdRoute
@@ -315,6 +359,7 @@ export interface FileRoutesByFullPath {
   '/pokemon/egg-group': typeof pokemonPokemonEggGroupIndexRoute
   '/berry/flavor': typeof BerryflavorFlavorIndexRoute
   '/pokemon/ability/$abilityId': typeof pokemonPokemonabilityAbilityAbilityIdRoute
+  '/pokemon/growth-rate/$rateId': typeof pokemonPokemongrowthRateGrowthRateRateIdRoute
   '/pokemon/characteristic/$characteristicId/modal': typeof pokemonPokemonCharacteristicCharacteristicIdModalRoute
   '/berry/flavor/$flavorId/modal': typeof BerryflavorFlavorFlavorIdModalRoute
   '/pokemon/ability/': typeof pokemonPokemonabilityAbilityIndexRoute
@@ -326,6 +371,7 @@ export interface FileRoutesByTo {
   '/berry/firmness/$firmnessId': typeof BerryFirmnessFirmnessIdRoute
   '/berry': typeof berryBerryIndexRoute
   '/berry/firmness': typeof BerryFirmnessIndexRoute
+  '/pokemon/growth-rate': typeof pokemonPokemongrowthRateGrowthRateRouteWithChildren
   '/pokemon/characteristic/$characteristicId': typeof pokemonPokemonCharacteristicCharacteristicIdRoute
   '/pokemon/egg-group/$eggGroupId': typeof pokemonPokemonEggGroupEggGroupIdRoute
   '/berry/flavor/$flavorId': typeof BerryflavorFlavorFlavorIdRoute
@@ -334,6 +380,7 @@ export interface FileRoutesByTo {
   '/pokemon/egg-group': typeof pokemonPokemonEggGroupIndexRoute
   '/berry/flavor': typeof BerryflavorFlavorIndexRoute
   '/pokemon/ability/$abilityId': typeof pokemonPokemonabilityAbilityAbilityIdRoute
+  '/pokemon/growth-rate/$rateId': typeof pokemonPokemongrowthRateGrowthRateRateIdRoute
   '/pokemon/characteristic/$characteristicId/modal': typeof pokemonPokemonCharacteristicCharacteristicIdModalRoute
   '/berry/flavor/$flavorId/modal': typeof BerryflavorFlavorFlavorIdModalRoute
   '/pokemon/ability': typeof pokemonPokemonabilityAbilityIndexRoute
@@ -348,6 +395,7 @@ export interface FileRoutesById {
   '/berry/': typeof berryBerryIndexRoute
   '/berry/firmness/': typeof BerryFirmnessIndexRoute
   '/pokemon/ability': typeof pokemonPokemonabilityAbilityRouteWithChildren
+  '/pokemon/growth-rate': typeof pokemonPokemongrowthRateGrowthRateRouteWithChildren
   '/pokemon/characteristic/$characteristicId': typeof pokemonPokemonCharacteristicCharacteristicIdRoute
   '/pokemon/egg-group/$eggGroupId': typeof pokemonPokemonEggGroupEggGroupIdRoute
   '/berry/flavor/$flavorId': typeof BerryflavorFlavorFlavorIdRoute
@@ -356,6 +404,7 @@ export interface FileRoutesById {
   '/pokemon/egg-group/': typeof pokemonPokemonEggGroupIndexRoute
   '/berry/flavor/': typeof BerryflavorFlavorIndexRoute
   '/pokemon/ability/$abilityId': typeof pokemonPokemonabilityAbilityAbilityIdRoute
+  '/pokemon/growth-rate/$rateId': typeof pokemonPokemongrowthRateGrowthRateRateIdRoute
   '/pokemon/characteristic/$characteristicId/modal': typeof pokemonPokemonCharacteristicCharacteristicIdModalRoute
   '/berry/flavor/$flavorId/modal': typeof BerryflavorFlavorFlavorIdModalRoute
   '/pokemon/ability/': typeof pokemonPokemonabilityAbilityIndexRoute
@@ -371,6 +420,7 @@ export interface FileRouteTypes {
     | '/berry/'
     | '/berry/firmness'
     | '/pokemon/ability'
+    | '/pokemon/growth-rate'
     | '/pokemon/characteristic/$characteristicId'
     | '/pokemon/egg-group/$eggGroupId'
     | '/berry/flavor/$flavorId'
@@ -379,6 +429,7 @@ export interface FileRouteTypes {
     | '/pokemon/egg-group'
     | '/berry/flavor'
     | '/pokemon/ability/$abilityId'
+    | '/pokemon/growth-rate/$rateId'
     | '/pokemon/characteristic/$characteristicId/modal'
     | '/berry/flavor/$flavorId/modal'
     | '/pokemon/ability/'
@@ -389,6 +440,7 @@ export interface FileRouteTypes {
     | '/berry/firmness/$firmnessId'
     | '/berry'
     | '/berry/firmness'
+    | '/pokemon/growth-rate'
     | '/pokemon/characteristic/$characteristicId'
     | '/pokemon/egg-group/$eggGroupId'
     | '/berry/flavor/$flavorId'
@@ -397,6 +449,7 @@ export interface FileRouteTypes {
     | '/pokemon/egg-group'
     | '/berry/flavor'
     | '/pokemon/ability/$abilityId'
+    | '/pokemon/growth-rate/$rateId'
     | '/pokemon/characteristic/$characteristicId/modal'
     | '/berry/flavor/$flavorId/modal'
     | '/pokemon/ability'
@@ -409,6 +462,7 @@ export interface FileRouteTypes {
     | '/berry/'
     | '/berry/firmness/'
     | '/pokemon/ability'
+    | '/pokemon/growth-rate'
     | '/pokemon/characteristic/$characteristicId'
     | '/pokemon/egg-group/$eggGroupId'
     | '/berry/flavor/$flavorId'
@@ -417,6 +471,7 @@ export interface FileRouteTypes {
     | '/pokemon/egg-group/'
     | '/berry/flavor/'
     | '/pokemon/ability/$abilityId'
+    | '/pokemon/growth-rate/$rateId'
     | '/pokemon/characteristic/$characteristicId/modal'
     | '/berry/flavor/$flavorId/modal'
     | '/pokemon/ability/'
@@ -429,6 +484,7 @@ export interface RootRouteChildren {
   BerryFirmnessFirmnessIdRoute: typeof BerryFirmnessFirmnessIdRoute
   BerryFirmnessIndexRoute: typeof BerryFirmnessIndexRoute
   pokemonPokemonabilityAbilityRoute: typeof pokemonPokemonabilityAbilityRouteWithChildren
+  pokemonPokemongrowthRateGrowthRateRoute: typeof pokemonPokemongrowthRateGrowthRateRouteWithChildren
   pokemonPokemonCharacteristicCharacteristicIdRoute: typeof pokemonPokemonCharacteristicCharacteristicIdRoute
   pokemonPokemonEggGroupEggGroupIdRoute: typeof pokemonPokemonEggGroupEggGroupIdRoute
   BerryflavorFlavorFlavorIdRoute: typeof BerryflavorFlavorFlavorIdRoute
@@ -447,6 +503,8 @@ const rootRouteChildren: RootRouteChildren = {
   BerryFirmnessIndexRoute: BerryFirmnessIndexRoute,
   pokemonPokemonabilityAbilityRoute:
     pokemonPokemonabilityAbilityRouteWithChildren,
+  pokemonPokemongrowthRateGrowthRateRoute:
+    pokemonPokemongrowthRateGrowthRateRouteWithChildren,
   pokemonPokemonCharacteristicCharacteristicIdRoute:
     pokemonPokemonCharacteristicCharacteristicIdRoute,
   pokemonPokemonEggGroupEggGroupIdRoute: pokemonPokemonEggGroupEggGroupIdRoute,
@@ -478,6 +536,7 @@ export const routeTree = rootRoute
         "/berry/firmness/$firmnessId",
         "/berry/firmness/",
         "/pokemon/ability",
+        "/pokemon/growth-rate",
         "/pokemon/characteristic/$characteristicId",
         "/pokemon/egg-group/$eggGroupId",
         "/berry/flavor/$flavorId",
@@ -520,6 +579,12 @@ export const routeTree = rootRoute
         "/pokemon/ability/"
       ]
     },
+    "/pokemon/growth-rate": {
+      "filePath": "(pokemon)/pokemon_/(growth-rate)/growth-rate.tsx",
+      "children": [
+        "/pokemon/growth-rate/$rateId"
+      ]
+    },
     "/pokemon/characteristic/$characteristicId": {
       "filePath": "(pokemon)/pokemon_/characteristic/$characteristicId.tsx"
     },
@@ -544,6 +609,10 @@ export const routeTree = rootRoute
     "/pokemon/ability/$abilityId": {
       "filePath": "(pokemon)/pokemon_/(ability)/ability.$abilityId.tsx",
       "parent": "/pokemon/ability"
+    },
+    "/pokemon/growth-rate/$rateId": {
+      "filePath": "(pokemon)/pokemon_/(growth-rate)/growth-rate.$rateId.tsx",
+      "parent": "/pokemon/growth-rate"
     },
     "/pokemon/characteristic/$characteristicId/modal": {
       "filePath": "(pokemon)/pokemon_/characteristic/$characteristicId_.modal.tsx"
