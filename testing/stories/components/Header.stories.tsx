@@ -4,7 +4,7 @@ import { userEvent, within, expect, screen } from "@storybook/test";
 import { Header } from "@/components/header";
 
 const meta = {
-    title: "Site Header",
+    title: "components/Site Header",
     component: Header,
     // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
     tags: ["autodocs"],
