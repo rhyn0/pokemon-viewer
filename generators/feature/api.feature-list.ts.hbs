@@ -1,0 +1,14 @@
+import { listEndpointFetchBuilder } from "@/lib/list-fetch-builder";
+import { {{camelCase name }}ListZ, endpointCollectionName } from "../types";
+import { queryOptions } from "@tanstack/react-query";
+import keyFactory from "./keys";
+
+export const get{{ properCase name }}List = listEndpointFetchBuilder(
+    endpointCollectionName,
+    {{ camelCase name }}ListZ,
+);
+
+export const getList{{properCase name }}QueryOptions = queryOptions({
+    queryKey: keyFactory.all,
+    queryFn: () => get{{ properCase name }}List({ offset: 0 }),
+});
