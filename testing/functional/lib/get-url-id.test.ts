@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { getUrlId } from "../../../app/lib/get-url-id";
+import { getUrlId } from "@/lib/get-url-id";
 
 describe("getUrlId", () => {
     it("should extract the id from a standard PokeAPI v2 url", () => {

@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest";
-import toProperCase from "../../../app/lib/to-proper";
+import toProperCase from "@/lib/to-proper";
 
 describe("toProperCase", () => {
     test("converts single word to proper case", () => {
