@@ -1,0 +1,17 @@
+import { useSuspenseQuery } from "@tanstack/react-query";
+import type { KeyT } from "../api/keys";
+import type { ExtraQueryOptionsT } from "@/types/api";
+import { getList{{ properCase name }}QueryOptions } from "../api/list-{{ kebabCase name }}";
+import type { {{properCase name }}ListT } from "../types";
+
+type QueryKey = KeyT["all"];
+export interface QueryProps
+    extends Partial<ExtraQueryOptionsT<{{ properCase name }}ListT, QueryKey>> {}
+export default function use{{ properCase name }}ListQuery({
+    ...options
+}: QueryProps = {}) {
+    return useSuspenseQuery({
+        ...getList{{properCase name }}QueryOptions,
+        ...options,
+    });
+}

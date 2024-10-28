@@ -1,0 +1,16 @@
+import { getEndpointFetchBuilder } from "@/lib/get-fetch-builder";
+import { {{ camelCase name }}Z, endpointCollectionName } from "../types";
+import { queryOptions } from "@tanstack/react-query";
+import keyFactory from "./keys";
+
+export const get{{ properCase name }} = getEndpointFetchBuilder(
+    endpointCollectionName,
+    {{ camelCase name }}Z,
+);
+
+export const get{{ properCase name }}QueryOptions = (id: number | string) => {
+    return queryOptions({
+        queryKey: keyFactory.detail(id),
+        queryFn: () => get{{ properCase name }}({ id }),
+    });
+};

@@ -1,4 +1,5 @@
 import storyGenerator from "./generators/story/index.js";
+import featureGenerator from "./generators/feature/index.js";
 
 /**
  *
@@ -6,4 +7,5 @@ import storyGenerator from "./generators/story/index.js";
  */
 export default function plopTemplate(plop) {
     plop.setGenerator("story", storyGenerator);
+    plop.setGenerator("feature", featureGenerator);
 }

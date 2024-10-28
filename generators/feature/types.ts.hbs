@@ -1,0 +1,40 @@
+import { z } from "zod";
+import {
+    type PokeExactEndpoint,
+    pokeExactEndpointZ,
+    pokePaginationResultZ,
+    type PokePaginationResult,
+    type LanguageRefT,
+    languageRefZ,
+    type PokemonSpeciesRefT,
+} from "@/types/api";
+
+export const endpointCollectionName = "{{ kebabCase name }}" as const;
+
+export type {{ properCase name }}T = {
+    id: number;
+    name: string;
+};
+export type {{ properCase name }}RefT = {
+    url: PokeExactEndpoint<typeof endpointCollectionName>;
+    name: string;
+};
+export type {{ properCase name }}ListT = PokePaginationResult<
+    {{ properCase name }}RefT,
+    typeof endpointCollectionName
+>;
+
+export const {{ camelCase name }}Z = z.object({
+    id: z.number(),
+    name: z.string().min(1),
+}) satisfies z.ZodType<{{ properCase name }}T>;
+
+export const {{ camelCase name}}RefZ = z.object({
+    name: z.string().min(1),
+    url: pokeExactEndpointZ(endpointCollectionName),
+}) satisfies z.ZodType<{{ properCase name}}RefT>;
+
+export const {{ camelCase name }}ListZ = pokePaginationResultZ(
+    {{ camelCase name}}RefZ,
+    endpointCollectionName,
+) satisfies z.ZodType<{{ properCase name }}ListT>;
