@@ -57,7 +57,7 @@
         "zod": "^3.23.8"
     },
     "devDependencies": {
-        "@biomejs/biome": "^1.9.3",
+        "@biomejs/biome": "1.9.3",
         "@chromatic-com/storybook": "^1.9.0",
         "@storybook/addon-coverage": "^1.0.4",
         "@storybook/addon-essentials": "^8.3.6",
