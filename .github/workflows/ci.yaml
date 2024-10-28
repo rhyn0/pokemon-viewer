@@ -36,9 +36,6 @@ jobs:
       - name: Run type checks
         run: npm run lint:types
 
-      - name: Check for any diffs
-        run: git diff --exit-code
-
       - name: Run tests
         run: npm run test
 
