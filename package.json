@@ -99,8 +99,5 @@
         "*.+(ts|tsx)": ["npm run lint", "bash -c 'npm run lint:types'"],
         "*.test.+(ts|tsx)": ["npm test"],
         "*.json": "npm run lint:format"
-    },
-    "optionalDependencies": {
-        "@biomejs/cli-linux-x64": "^1.9.4"
     }
 }
