@@ -93,6 +93,7 @@
     },
     "lint-staged": {
         "*.+(ts|tsx)": ["npm run lint", "bash -c 'npm run lint:types'"],
-        "*.test.+(ts|tsx)": ["npm test"]
+        "*.test.+(ts|tsx)": ["npm test"],
+        "*.json": "npm run lint:format"
     }
 }
