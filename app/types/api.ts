@@ -98,3 +98,7 @@ export const languageRefZ = z.object({
     name: z.string(),
     url: pokeExactEndpointZ("language"),
 }) satisfies z.ZodType<LanguageRefT>;
+export type PokemonSpeciesRefT = {
+    name: string;
+    url: PokeExactEndpoint<"pokemon-species">;
+};

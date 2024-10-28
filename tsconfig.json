@@ -1,8 +1,6 @@
 {
     "compilerOptions": {
-        "types": [
-            "vitest/globals"
-        ],
+        "types": ["vitest/globals"],
         "jsx": "react-jsx",
         "moduleResolution": "Bundler",
         "module": "ESNext",
@@ -10,17 +8,11 @@
         "skipLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "@/*": [
-                "./app/*"
-            ]
+            "@/*": ["./app/*"]
         },
         "strict": true,
         "esModuleInterop": true,
-        "lib": [
-            "DOM",
-            "DOM.Iterable",
-            "ES2022"
-        ],
+        "lib": ["DOM", "DOM.Iterable", "ES2022"],
         "isolatedModules": true,
         "resolveJsonModule": true,
         "allowJs": true,
