@@ -18,7 +18,7 @@
         "fix": "npm run fix:format && npm run fix:lint",
         "fix:format": "biome format --write ./",
         "fix:lint": "biome lint --write ./",
-        "test": "vitest run",
+        "test": "vitest run --silent",
         "test:watch": "vitest",
         "plop": "plop",
         "storybook": "storybook dev -p 6006 -c testing/.storybook",
@@ -93,6 +93,6 @@
     },
     "lint-staged": {
         "*.+(ts|tsx)": ["npm run lint", "bash -c 'npm run lint:types'"],
-        "*.+test.(ts|tsx)": ["npm test"]
+        "*.test.+(ts|tsx)": ["npm test"]
     }
 }

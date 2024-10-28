@@ -15,7 +15,7 @@ export default defineConfig({
             reporter: ["text-summary", "html"],
             skipFull: true,
         },
-        include: ["testing/**/*.test.ts"],
+        include: ["testing/**/*.test.ts?(x)"],
         globals: true,
     },
 });
