@@ -10,7 +10,7 @@ export function extractGroup<T extends string>(url: PokeExactEndpoint<T>): T {
 }
 
 export function extractId<T extends string>(url: PokeExactEndpoint<T>): string {
-    const regex = /\/([^/]+)\/?$/;
+    const regex = /v2\/[^/]+\/([^/]+)\/?$/;
     const match = url.match(regex);
     if (match?.[1]) {
         return match[1];

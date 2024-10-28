@@ -21,5 +21,13 @@
         "noUncheckedIndexedAccess": true,
         "noEmit": true
     },
-    "include": ["app/**/*.ts", "app/**/*.tsx"]
+    "include": [
+        "app/**/*.ts",
+        "app/**/*.tsx",
+        ".storybook/**/*.ts",
+        ".storybook/**/*.tsx",
+        "testing/**/*.ts",
+        "testing/**/*.tsx",
+        ".storybook/preview.tsx"
+    ]
 }

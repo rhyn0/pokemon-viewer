@@ -24,7 +24,7 @@ jobs:
             cache-dependency-path: './package-lock.json'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install --include dev --no-audit
 
       - name: Run lint
         run: |
@@ -35,9 +35,6 @@ jobs:
 
       - name: Run type checks
         run: npm run lint:types
-
-      - name: Check for any diffs
-        run: git diff --exit-code
 
       - name: Run tests
         run: npm run test

@@ -6,12 +6,12 @@ import type { QueryClient } from "@tanstack/react-query";
 import DefaultCatchBoundary from "@/components/error-boundary";
 import NotFound from "@/components/not-found";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-
-// CSS
-import "@/global.css";
 import { siteConfig } from "@/config/site";
 import { Header } from "@/components/header";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
+
+// CSS
+import "@/global.css";
 
 export const Route = createRootRouteWithContext<{
     queryClient: QueryClient;

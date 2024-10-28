@@ -1,0 +1,18 @@
+import type { Meta, StoryObj } from '@storybook/react';
+
+import { {{ properCase name }} } from '@/{{ srcFolder }}/{{ kebabCase name }}';
+
+const meta = {
+  title: "{{ properCase name}}",
+  component: {{ properCase name }},
+  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
+  tags: ["autodocs"],
+} satisfies Meta<typeof {{ properCase name }}>;
+
+export default meta;
+
+type Story = StoryObj<typeof {{ properCase name }}>;
+
+export const Default: Story = {
+  args: {}
+};
