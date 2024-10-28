@@ -10,38 +10,43 @@ const feautreGenerator = {
             name: "name",
             message: "feature name",
         },
+        {
+            type: "input",
+            name: "folderName",
+            message: "folder name",
+        },
     ],
     actions: () => {
         const generatePath = "app/features";
         return [
             {
                 type: "add",
-                path: `${generatePath}/{{kebabCase name}}/types.ts`,
+                path: `${generatePath}/{{kebabCase folderName}}/types.ts`,
                 templateFile: "generators/feature/types.ts.hbs",
             },
             {
                 type: "add",
-                path: `${generatePath}/{{kebabCase name}}/api/keys.ts`,
+                path: `${generatePath}/{{kebabCase folderName}}/api/keys.ts`,
                 templateFile: "generators/feature/api.keys.ts.hbs",
             },
             {
                 type: "add",
-                path: `${generatePath}/{{kebabCase name}}/api/get-{{ kebabCase name }}.ts`,
+                path: `${generatePath}/{{kebabCase folderName}}/api/get-{{ kebabCase name }}.ts`,
                 templateFile: "generators/feature/api.feature-get.ts.hbs",
             },
             {
                 type: "add",
-                path: `${generatePath}/{{kebabCase name}}/api/list-{{ kebabCase name }}.ts`,
+                path: `${generatePath}/{{kebabCase folderName}}/api/list-{{ kebabCase name }}.ts`,
                 templateFile: "generators/feature/api.feature-list.ts.hbs",
             },
             {
                 type: "add",
-                path: `${generatePath}/{{kebabCase name}}/hooks/use-list-{{ kebabCase name }}.tsx`,
+                path: `${generatePath}/{{kebabCase folderName}}/hooks/use-list-{{ kebabCase name }}.tsx`,
                 templateFile: "generators/feature/hooks.feature-list.tsx.hbs",
             },
             {
                 type: "add",
-                path: `${generatePath}/{{kebabCase name}}/hooks/use-get-{{ kebabCase name }}.tsx`,
+                path: `${generatePath}/{{kebabCase folderName}}/hooks/use-get-{{ kebabCase name }}.tsx`,
                 templateFile: "generators/feature/hooks.feature-get.tsx.hbs",
             },
         ];
