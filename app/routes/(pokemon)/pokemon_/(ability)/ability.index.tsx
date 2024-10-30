@@ -3,7 +3,7 @@ import { TypographyH1 } from "@/components/typography/headings";
 import { TypographyP } from "@/components/typography/text";
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/(pokemon)/pokemon/(ability)/ability/")({
+export const Route = createFileRoute("/(pokemon)/pokemon_/(ability)/ability/")({
     component: () => <AbilityIndexContent />,
 });
 

@@ -3,7 +3,7 @@ import { getCharacteristicInfiniteQueryOptions } from "@/features/pokemon-charac
 import CharacteristicGrid from "@/features/pokemon-characteristics/components/characteristic-grid";
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/(pokemon)/pokemon/characteristic/")({
+export const Route = createFileRoute("/(pokemon)/pokemon_/characteristic/")({
     loader: ({ context: { queryClient } }) =>
         queryClient.ensureInfiniteQueryData(
             getCharacteristicInfiniteQueryOptions,

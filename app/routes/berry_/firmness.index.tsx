@@ -4,7 +4,7 @@ import FirmnessGrid from "@/features/poke-berry-firmness/components/firmness-gri
 import type { FirmnessGridProps } from "@/features/poke-berry-firmness/components/firmness-grid";
 import { TypographyH1 } from "@/components/typography/headings";
 
-export const Route = createFileRoute("/berry/firmness/")({
+export const Route = createFileRoute("/berry_/firmness/")({
     loader: ({ context: { queryClient } }) =>
         queryClient.ensureInfiniteQueryData(
             getBerryFirmnessInfiniteQueryOptions,

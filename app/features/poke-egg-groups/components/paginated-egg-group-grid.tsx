@@ -13,7 +13,7 @@ import { cn } from "@/lib/cn";
 import { getRouteApi, Link } from "@tanstack/react-router";
 import React from "react";
 
-const Route = getRouteApi("/pokemon/egg-group/");
+const Route = getRouteApi("/(pokemon)/pokemon_/egg-group/");
 
 export type PaginatedEggGroupGridProps = {
     className?: string;

@@ -11,7 +11,7 @@ import toProper from "@/lib/to-proper";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute(
-    "/(pokemon)/pokemon/(ability)/ability/$abilityId",
+    "/(pokemon)/pokemon_/(ability)/ability/$abilityId",
 )({
     loader: ({ context: { queryClient }, params: { abilityId } }) =>
         queryClient.ensureQueryData(getPokeAbilityQueryOptions(abilityId)),

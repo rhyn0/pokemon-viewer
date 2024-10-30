@@ -14,7 +14,7 @@ const searchValidator = z.object({
     page: z.number().default(1),
 });
 
-export const Route = createFileRoute("/(pokemon)/pokemon/egg-group/")({
+export const Route = createFileRoute("/(pokemon)/pokemon_/egg-group/")({
     loaderDeps: ({ search: { page } }) => ({ page }),
     loader: ({ context: { queryClient }, deps: { page } }) =>
         queryClient.ensureQueryData(getEggGroupPaginatedQueryOptions(page)),

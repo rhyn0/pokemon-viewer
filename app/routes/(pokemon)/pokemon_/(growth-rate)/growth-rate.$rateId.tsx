@@ -11,7 +11,7 @@ import { renderKatexToMathML } from "@/lib/render-katex";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute(
-    "/(pokemon)/pokemon/(growth-rate)/growth-rate/$rateId",
+    "/(pokemon)/pokemon_/(growth-rate)/growth-rate/$rateId",
 )({
     loader: ({ context: { queryClient }, params: { rateId } }) =>
         queryClient.ensureQueryData(getGrowthRateQueryOptions(rateId)),

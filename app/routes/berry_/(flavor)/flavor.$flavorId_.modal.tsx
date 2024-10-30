@@ -11,7 +11,9 @@ import {
 import useBerryFlavorQuery from "@/features/poke-berry-flavor/hooks/use-berry-flavor";
 import { Button } from "@/components/ui/button";
 
-export const Route = createFileRoute("/berry/(flavor)/flavor/$flavorId/modal")({
+export const Route = createFileRoute(
+    "/berry_/(flavor)/flavor/$flavorId_/modal",
+)({
     loader: ({ context: { queryClient }, params: { flavorId } }) =>
         queryClient.ensureQueryData(getBerryFlavorQueryOptions(flavorId)),
     component: () => <BerryFirmnessModal />,
