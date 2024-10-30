@@ -4,7 +4,7 @@ import { usePokeCharacteristicQuery } from "@/features/pokemon-characteristics/h
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute(
-    "/(pokemon)/pokemon/characteristic/$characteristicId",
+    "/(pokemon)/pokemon_/characteristic/$characteristicId",
 )({
     loader: ({ context: { queryClient }, params: { characteristicId } }) =>
         queryClient.ensureQueryData(

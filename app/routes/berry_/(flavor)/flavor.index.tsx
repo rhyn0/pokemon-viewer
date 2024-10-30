@@ -4,7 +4,7 @@ import type { GridProps } from "@/features/poke-berry-flavor/components/grid";
 import { getBerryFlavorInfiniteQueryOptions } from "@/features/poke-berry-flavor/api/list-flavor";
 import { TypographyH1 } from "@/components/typography/headings";
 
-export const Route = createFileRoute("/berry/(flavor)/flavor/")({
+export const Route = createFileRoute("/berry_/(flavor)/flavor/")({
     loader: ({ context: { queryClient } }) =>
         queryClient.ensureInfiniteQueryData(getBerryFlavorInfiniteQueryOptions),
     component: () => <BerryFlavorIndex />,

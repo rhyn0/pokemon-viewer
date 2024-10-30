@@ -7,7 +7,7 @@ import { useNavigate } from "@tanstack/react-router";
 import React from "react";
 
 export const Route = createFileRoute(
-    "/(pokemon)/pokemon/characteristic/$characteristicId/modal",
+    "/(pokemon)/pokemon_/characteristic/$characteristicId_/modal",
 )({
     loader: ({ context: { queryClient }, params: { characteristicId } }) =>
         queryClient.ensureQueryData(

@@ -15,7 +15,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import toProperCase from "@/lib/to-proper";
 import { Button } from "@/components/ui/button";
 
-export const Route = createFileRoute("/berry/(flavor)/flavor/$flavorId")({
+export const Route = createFileRoute("/berry_/(flavor)/flavor/$flavorId")({
     loader: ({ context: { queryClient }, params: { flavorId } }) =>
         queryClient.ensureQueryData(getBerryFlavorQueryOptions(flavorId)),
     component: () => <BerryFlavorDetails />,

@@ -11,7 +11,7 @@ import {
 import useBerryFirmnessQuery from "@/features/poke-berry-firmness/hooks/use-berry-firmness";
 import { Button } from "@/components/ui/button";
 
-export const Route = createFileRoute("/berry/firmness/$firmnessId/modal")({
+export const Route = createFileRoute("/berry_/firmness/$firmnessId_/modal")({
     loader: ({ context: { queryClient }, params: { firmnessId } }) =>
         queryClient.ensureQueryData(getBerryFirmnessQueryOptions(firmnessId)),
     component: () => <BerryFirmnessModal />,

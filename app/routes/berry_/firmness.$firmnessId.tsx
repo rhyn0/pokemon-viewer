@@ -4,7 +4,7 @@ import FirmnessBerryCarousel from "@/features/poke-berry-firmness/components/fir
 import useBerryFirmnessQuery from "@/features/poke-berry-firmness/hooks/use-berry-firmness";
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/berry/firmness/$firmnessId")({
+export const Route = createFileRoute("/berry_/firmness/$firmnessId")({
     loader: ({ context: { queryClient }, params: { firmnessId } }) => {
         queryClient.ensureQueryData(getBerryFirmnessQueryOptions(firmnessId));
     },

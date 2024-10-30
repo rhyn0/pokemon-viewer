@@ -4,7 +4,7 @@ import { TypographyH1 } from "@/components/typography/headings";
 import { usePokeEggGroupQuery } from "@/features/poke-egg-groups/hooks/use-get-egg-group";
 import { getPokeEggGroupQueryOptions } from "@/features/poke-egg-groups/api/get-egg-group";
 export const Route = createFileRoute(
-    "/(pokemon)/pokemon/egg-group/$eggGroupId",
+    "/(pokemon)/pokemon_/egg-group/$eggGroupId",
 )({
     loader: ({ context: { queryClient }, params: { eggGroupId } }) =>
         queryClient.ensureQueryData(getPokeEggGroupQueryOptions(eggGroupId)),
