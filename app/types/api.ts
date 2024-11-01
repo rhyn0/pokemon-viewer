@@ -5,7 +5,6 @@ import type {
     UseSuspenseInfiniteQueryOptions,
 } from "@tanstack/react-query";
 import { z } from "zod";
-
 export type PaginationProps = {
     offset?: number;
     limit?: number;
@@ -14,8 +13,10 @@ export type PaginationProps = {
 export type PokeListEndpoint<TPokeType extends string> =
     `https://pokeapi.co/api/v2/${TPokeType}?offset=${number}&limit=${number}`;
 
-export type PokeExactEndpoint<TPokeType extends string> =
-    `https://pokeapi.co/api/v2/${TPokeType}/${number | string}`;
+export type PokeExactEndpoint<
+    TPokeType extends string,
+    TPokeId extends number | string = number | string,
+> = `https://pokeapi.co/api/v2/${TPokeType}/${TPokeId}`;
 
 export type PokeApiReference<TPokeType extends string> = {
     name: string;
@@ -98,7 +99,24 @@ export const languageRefZ = z.object({
     name: z.string(),
     url: pokeExactEndpointZ("language"),
 }) satisfies z.ZodType<LanguageRefT>;
+
 export type PokemonSpeciesRefT = {
     name: string;
     url: PokeExactEndpoint<"pokemon-species">;
 };
+export const pokemonSpeciesRefZ = z.object({
+    name: z.string(),
+    url: pokeExactEndpointZ("pokemon-species"),
+}) satisfies z.ZodType<PokemonSpeciesRefT>;
+
+export type GenerationRefT = {
+    name: `generation-${string}`; // uses roman numerals
+    url: PokeExactEndpoint<"generation">;
+};
+export const generationRefZ = z.object({
+    name: z.custom<`generation-${string}`>((val) => {
+        const parsedString = z.string().parse(val);
+        return parsedString.startsWith("generation-");
+    }),
+    url: pokeExactEndpointZ("generation"),
+}) satisfies z.ZodType<GenerationRefT>;
