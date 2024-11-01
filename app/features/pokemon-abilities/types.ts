@@ -1,18 +1,14 @@
 import { z } from "zod";
 import {
-    type PokeExactEndpoint,
-    pokeExactEndpointZ,
-    pokePaginationResultZ,
+    type GenerationRefT,
     type PokeApiReference,
     type PokePaginationResult,
+    generationRefZ,
+    pokeExactEndpointZ,
+    pokePaginationResultZ,
 } from "@/types/api";
 
 const endpointCollectionName = "ability" as const;
-
-type GenerationRefT = {
-    name: `generation-${string}`; // uses roman numerals
-    url: PokeExactEndpoint<"generation">;
-};
 
 type LanguageRefT = PokeApiReference<"language">;
 
@@ -69,14 +65,6 @@ export type PokeAbilityListT = PokePaginationResult<
     typeof endpointCollectionName
 >;
 
-const generationRefZ = z.object({
-    name: z.custom<`generation-${string}`>((val) => {
-        const parsedString = z.string().parse(val);
-        return parsedString.startsWith("generation-");
-    }),
-    url: pokeExactEndpointZ("generation"),
-}) satisfies z.ZodType<GenerationRefT>;
-
 const languageRefZ = z.object({
     name: z.string(),
     url: pokeExactEndpointZ("language"),
@@ -115,7 +103,7 @@ const abilityFlavorTextZ = z.object({
     }),
 }) satisfies z.ZodType<AbilityFlavorTextT>;
 
-const abilityPokemonZ = z.object({
+export const abilityPokemonZ = z.object({
     is_hidden: z.boolean(),
     slot: z.number().min(1).max(3),
     pokemon: z.object({
