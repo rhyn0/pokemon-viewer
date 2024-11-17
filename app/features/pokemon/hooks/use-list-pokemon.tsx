@@ -1,14 +1,15 @@
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { useSuspenseInfiniteQuery } from "@tanstack/react-query";
+import { getListPokemonQueryOptions } from "@/features/pokemon/api/list-pokemon";
+
 import type { KeyT } from "../api/keys";
-import type { ExtraQueryOptionsT } from "@/types/api";
-import { getListPokemonQueryOptions } from "../api/list-pokemon";
+import type { ExtraInfiniteQueryOptionsT } from "@/types/api";
 import type { PokemonListT } from "../types";
 
 type QueryKey = KeyT["all"];
 export interface QueryProps
-    extends Partial<ExtraQueryOptionsT<PokemonListT, QueryKey>> {}
+    extends Partial<ExtraInfiniteQueryOptionsT<PokemonListT, QueryKey>> {}
 export default function usePokemonListQuery({ ...options }: QueryProps = {}) {
-    return useSuspenseQuery({
+    return useSuspenseInfiniteQuery({
         ...getListPokemonQueryOptions,
         ...options,
     });

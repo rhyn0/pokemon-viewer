@@ -43,9 +43,14 @@ export function TypographyH3({ children, className }: TypographyHeadingProps) {
     );
 }
 
-export function TypographyH4({ children }: TypographyHeadingProps) {
+export function TypographyH4({ children, className }: TypographyHeadingProps) {
     return (
-        <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
+        <h4
+            className={cn(
+                "scroll-m-20 text-xl font-semibold tracking-tight",
+                className,
+            )}
+        >
             {children}
         </h4>
     );

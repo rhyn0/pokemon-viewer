@@ -62,32 +62,66 @@ const config = {
             },
             keyframes: {
                 "accordion-down": {
-                    from: { height: "0" },
-                    to: { height: "var(--radix-accordion-content-height)" },
+                    from: {
+                        height: "0",
+                    },
+                    to: {
+                        height: "var(--radix-accordion-content-height)",
+                    },
                 },
                 "accordion-up": {
-                    from: { height: "var(--radix-accordion-content-height)" },
-                    to: { height: "0" },
+                    from: {
+                        height: "var(--radix-accordion-content-height)",
+                    },
+                    to: {
+                        height: "0",
+                    },
                 },
                 fadeIn: {
-                    "0%": { opacity: "0" },
-                    "100%": { opacity: "1" },
+                    "0%": {
+                        opacity: "0",
+                    },
+                    "100%": {
+                        opacity: "1",
+                    },
                 },
                 slideInLeft: {
-                    "0%": { transform: "translateX(-50px)", opacity: "0" },
-                    "100%": { transform: "translateX(0)", opacity: "1" },
+                    "0%": {
+                        transform: "translateX(-50px)",
+                        opacity: "0",
+                    },
+                    "100%": {
+                        transform: "translateX(0)",
+                        opacity: "1",
+                    },
                 },
                 slideInRight: {
-                    "0%": { transform: "translateX(50px)", opacity: "0" },
-                    "100%": { transform: "translateX(0)", opacity: "1" },
+                    "0%": {
+                        transform: "translateX(50px)",
+                        opacity: "0",
+                    },
+                    "100%": {
+                        transform: "translateX(0)",
+                        opacity: "1",
+                    },
                 },
                 slideInBottom: {
-                    "0%": { transform: "translateY(50px)", opacity: "0" },
-                    "100%": { transform: "translateY(0)", opacity: "1" },
+                    "0%": {
+                        transform: "translateY(50px)",
+                        opacity: "0",
+                    },
+                    "100%": {
+                        transform: "translateY(0)",
+                        opacity: "1",
+                    },
                 },
                 moveBackground: {
-                    "0%": { backgroundPosition: "0 0" },
-                    "100%": { backgroundPosition: "30px 0" },
+                    "0%": {
+                        backgroundPosition: "0 0",
+                    },
+                    "100%": {
+                        backgroundPosition: "30px 0",
+                    },
                 },
             },
             animation: {

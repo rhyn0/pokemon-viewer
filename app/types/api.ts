@@ -1,10 +1,11 @@
+import { z } from "zod";
+
 import type {
     QueryOptions,
     DefaultError,
     InfiniteData,
     UseSuspenseInfiniteQueryOptions,
 } from "@tanstack/react-query";
-import { z } from "zod";
 export type PaginationProps = {
     offset?: number;
     limit?: number;

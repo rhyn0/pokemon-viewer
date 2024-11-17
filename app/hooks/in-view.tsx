@@ -1,12 +1,13 @@
 import React from "react";
 
 export type InViewHookT<T extends HTMLElement> = {
-    ref: React.LegacyRef<T>;
+    ref: React.RefObject<T>;
     inView: boolean;
 };
 
 export default function useInView<T extends HTMLElement>(): InViewHookT<T> {
     const elementRef = React.useRef<T>(null);
+    elementRef.current;
     const [isVisible, setIsVisible] = React.useState(false);
 
     React.useEffect(() => {
