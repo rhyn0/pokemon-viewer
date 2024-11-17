@@ -1,14 +1,23 @@
 import { listEndpointFetchBuilder } from "@/lib/list-fetch-builder";
-import { pokemonListZ, endpointCollectionName } from "../types";
-import { queryOptions } from "@tanstack/react-query";
+import { pokemonListZ, endpointCollectionName } from "@/features/pokemon/types";
+import { infiniteQueryOptions } from "@tanstack/react-query";
 import keyFactory from "./keys";
+import { getOffsetParam } from "@/lib/offset-parsing";
 
 export const getPokemonList = listEndpointFetchBuilder(
     endpointCollectionName,
     pokemonListZ,
 );
 
-export const getListPokemonQueryOptions = queryOptions({
+export const getListPokemonQueryOptions = infiniteQueryOptions({
     queryKey: keyFactory.all,
-    queryFn: () => getPokemonList({ offset: 0 }),
+    queryFn: ({ pageParam }) => getPokemonList({ offset: pageParam }),
+    initialPageParam: 0,
+    getNextPageParam: (lastPage) => {
+        if (!lastPage.next) {
+            // no more pages
+            return undefined;
+        }
+        return getOffsetParam(lastPage.next);
+    },
 });

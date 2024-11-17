@@ -1,5 +1,5 @@
 import { getEndpointFetchBuilder } from "@/lib/get-fetch-builder";
-import { pokemonZ, endpointCollectionName } from "../types";
+import { pokemonZ, endpointCollectionName } from "@/features/pokemon/types";
 import { queryOptions } from "@tanstack/react-query";
 import keyFactory from "./keys";
 

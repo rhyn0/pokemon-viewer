@@ -14,8 +14,10 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as berryBerryImport } from './routes/(berry)/berry'
 import { Route as BerryFirmnessIndexImport } from './routes/berry_/firmness.index'
+import { Route as pokemonPokemonIndexImport } from './routes/(pokemon)/pokemon.index'
 import { Route as berryBerryIndexImport } from './routes/(berry)/berry.index'
 import { Route as BerryFirmnessFirmnessIdImport } from './routes/berry_/firmness.$firmnessId'
+import { Route as pokemonPokemonPokemonIdImport } from './routes/(pokemon)/pokemon_/$pokemonId'
 import { Route as berryBerryBerryIdImport } from './routes/(berry)/berry.$berryId'
 import { Route as BerryflavorFlavorIndexImport } from './routes/berry_/(flavor)/flavor.index'
 import { Route as pokemonPokemonPokeathlonStatIndexImport } from './routes/(pokemon)/pokemon_/pokeathlon-stat.index'
@@ -28,6 +30,7 @@ import { Route as pokemonPokemonCharacteristicCharacteristicIdImport } from './r
 import { Route as pokemonPokemonnatureNatureImport } from './routes/(pokemon)/pokemon_/(nature)/nature'
 import { Route as pokemonPokemongrowthRateGrowthRateImport } from './routes/(pokemon)/pokemon_/(growth-rate)/growth-rate'
 import { Route as pokemonPokemonabilityAbilityImport } from './routes/(pokemon)/pokemon_/(ability)/ability'
+import { Route as pokemonPokemonPokemonIdModalImport } from './routes/(pokemon)/pokemon_.$pokemonId_.modal'
 import { Route as pokemonPokemonnatureNatureIndexImport } from './routes/(pokemon)/pokemon_/(nature)/nature.index'
 import { Route as pokemonPokemonabilityAbilityIndexImport } from './routes/(pokemon)/pokemon_/(ability)/ability.index'
 import { Route as BerryflavorFlavorFlavorIdModalImport } from './routes/berry_/(flavor)/flavor.$flavorId_.modal'
@@ -56,6 +59,12 @@ const BerryFirmnessIndexRoute = BerryFirmnessIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const pokemonPokemonIndexRoute = pokemonPokemonIndexImport.update({
+  id: '/(pokemon)/pokemon/',
+  path: '/pokemon/',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const berryBerryIndexRoute = berryBerryIndexImport.update({
   id: '/',
   path: '/',
@@ -65,6 +74,12 @@ const berryBerryIndexRoute = berryBerryIndexImport.update({
 const BerryFirmnessFirmnessIdRoute = BerryFirmnessFirmnessIdImport.update({
   id: '/berry_/firmness/$firmnessId',
   path: '/berry/firmness/$firmnessId',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const pokemonPokemonPokemonIdRoute = pokemonPokemonPokemonIdImport.update({
+  id: '/(pokemon)/pokemon_/$pokemonId',
+  path: '/pokemon/$pokemonId',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -150,6 +165,13 @@ const pokemonPokemonabilityAbilityRoute =
     getParentRoute: () => rootRoute,
   } as any)
 
+const pokemonPokemonPokemonIdModalRoute =
+  pokemonPokemonPokemonIdModalImport.update({
+    id: '/(pokemon)/pokemon_/$pokemonId_/modal',
+    path: '/pokemon/$pokemonId/modal',
+    getParentRoute: () => rootRoute,
+  } as any)
+
 const pokemonPokemonnatureNatureIndexRoute =
   pokemonPokemonnatureNatureIndexImport.update({
     id: '/',
@@ -224,6 +246,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof berryBerryBerryIdImport
       parentRoute: typeof berryBerryImport
     }
+    '/(pokemon)/pokemon_/$pokemonId': {
+      id: '/(pokemon)/pokemon_/$pokemonId'
+      path: '/pokemon/$pokemonId'
+      fullPath: '/pokemon/$pokemonId'
+      preLoaderRoute: typeof pokemonPokemonPokemonIdImport
+      parentRoute: typeof rootRoute
+    }
     '/berry_/firmness/$firmnessId': {
       id: '/berry_/firmness/$firmnessId'
       path: '/berry/firmness/$firmnessId'
@@ -238,11 +267,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof berryBerryIndexImport
       parentRoute: typeof berryBerryImport
     }
+    '/(pokemon)/pokemon/': {
+      id: '/(pokemon)/pokemon/'
+      path: '/pokemon'
+      fullPath: '/pokemon'
+      preLoaderRoute: typeof pokemonPokemonIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/berry_/firmness/': {
       id: '/berry_/firmness/'
       path: '/berry/firmness'
       fullPath: '/berry/firmness'
       preLoaderRoute: typeof BerryFirmnessIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/(pokemon)/pokemon_/$pokemonId_/modal': {
+      id: '/(pokemon)/pokemon_/$pokemonId_/modal'
+      path: '/pokemon/$pokemonId/modal'
+      fullPath: '/pokemon/$pokemonId/modal'
+      preLoaderRoute: typeof pokemonPokemonPokemonIdModalImport
       parentRoute: typeof rootRoute
     }
     '/(pokemon)/pokemon_/(ability)/ability': {
@@ -444,9 +487,12 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/berry': typeof berryBerryRouteWithChildren
   '/berry/$berryId': typeof berryBerryBerryIdRoute
+  '/pokemon/$pokemonId': typeof pokemonPokemonPokemonIdRoute
   '/berry/firmness/$firmnessId': typeof BerryFirmnessFirmnessIdRoute
   '/berry/': typeof berryBerryIndexRoute
+  '/pokemon': typeof pokemonPokemonIndexRoute
   '/berry/firmness': typeof BerryFirmnessIndexRoute
+  '/pokemon/$pokemonId/modal': typeof pokemonPokemonPokemonIdModalRoute
   '/pokemon/ability': typeof pokemonPokemonabilityAbilityRouteWithChildren
   '/pokemon/growth-rate': typeof pokemonPokemongrowthRateGrowthRateRouteWithChildren
   '/pokemon/nature': typeof pokemonPokemonnatureNatureRouteWithChildren
@@ -470,9 +516,12 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/berry/$berryId': typeof berryBerryBerryIdRoute
+  '/pokemon/$pokemonId': typeof pokemonPokemonPokemonIdRoute
   '/berry/firmness/$firmnessId': typeof BerryFirmnessFirmnessIdRoute
   '/berry': typeof berryBerryIndexRoute
+  '/pokemon': typeof pokemonPokemonIndexRoute
   '/berry/firmness': typeof BerryFirmnessIndexRoute
+  '/pokemon/$pokemonId/modal': typeof pokemonPokemonPokemonIdModalRoute
   '/pokemon/growth-rate': typeof pokemonPokemongrowthRateGrowthRateRouteWithChildren
   '/pokemon/characteristic/$characteristicId': typeof pokemonPokemonCharacteristicCharacteristicIdRoute
   '/pokemon/egg-group/$eggGroupId': typeof pokemonPokemonEggGroupEggGroupIdRoute
@@ -496,9 +545,12 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/(berry)/berry': typeof berryBerryRouteWithChildren
   '/(berry)/berry/$berryId': typeof berryBerryBerryIdRoute
+  '/(pokemon)/pokemon_/$pokemonId': typeof pokemonPokemonPokemonIdRoute
   '/berry_/firmness/$firmnessId': typeof BerryFirmnessFirmnessIdRoute
   '/(berry)/berry/': typeof berryBerryIndexRoute
+  '/(pokemon)/pokemon/': typeof pokemonPokemonIndexRoute
   '/berry_/firmness/': typeof BerryFirmnessIndexRoute
+  '/(pokemon)/pokemon_/$pokemonId_/modal': typeof pokemonPokemonPokemonIdModalRoute
   '/(pokemon)/pokemon_/(ability)/ability': typeof pokemonPokemonabilityAbilityRouteWithChildren
   '/(pokemon)/pokemon_/(growth-rate)/growth-rate': typeof pokemonPokemongrowthRateGrowthRateRouteWithChildren
   '/(pokemon)/pokemon_/(nature)/nature': typeof pokemonPokemonnatureNatureRouteWithChildren
@@ -525,9 +577,12 @@ export interface FileRouteTypes {
     | '/'
     | '/berry'
     | '/berry/$berryId'
+    | '/pokemon/$pokemonId'
     | '/berry/firmness/$firmnessId'
     | '/berry/'
+    | '/pokemon'
     | '/berry/firmness'
+    | '/pokemon/$pokemonId/modal'
     | '/pokemon/ability'
     | '/pokemon/growth-rate'
     | '/pokemon/nature'
@@ -550,9 +605,12 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/berry/$berryId'
+    | '/pokemon/$pokemonId'
     | '/berry/firmness/$firmnessId'
     | '/berry'
+    | '/pokemon'
     | '/berry/firmness'
+    | '/pokemon/$pokemonId/modal'
     | '/pokemon/growth-rate'
     | '/pokemon/characteristic/$characteristicId'
     | '/pokemon/egg-group/$eggGroupId'
@@ -574,9 +632,12 @@ export interface FileRouteTypes {
     | '/'
     | '/(berry)/berry'
     | '/(berry)/berry/$berryId'
+    | '/(pokemon)/pokemon_/$pokemonId'
     | '/berry_/firmness/$firmnessId'
     | '/(berry)/berry/'
+    | '/(pokemon)/pokemon/'
     | '/berry_/firmness/'
+    | '/(pokemon)/pokemon_/$pokemonId_/modal'
     | '/(pokemon)/pokemon_/(ability)/ability'
     | '/(pokemon)/pokemon_/(growth-rate)/growth-rate'
     | '/(pokemon)/pokemon_/(nature)/nature'
@@ -601,8 +662,11 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   berryBerryRoute: typeof berryBerryRouteWithChildren
+  pokemonPokemonPokemonIdRoute: typeof pokemonPokemonPokemonIdRoute
   BerryFirmnessFirmnessIdRoute: typeof BerryFirmnessFirmnessIdRoute
+  pokemonPokemonIndexRoute: typeof pokemonPokemonIndexRoute
   BerryFirmnessIndexRoute: typeof BerryFirmnessIndexRoute
+  pokemonPokemonPokemonIdModalRoute: typeof pokemonPokemonPokemonIdModalRoute
   pokemonPokemonabilityAbilityRoute: typeof pokemonPokemonabilityAbilityRouteWithChildren
   pokemonPokemongrowthRateGrowthRateRoute: typeof pokemonPokemongrowthRateGrowthRateRouteWithChildren
   pokemonPokemonnatureNatureRoute: typeof pokemonPokemonnatureNatureRouteWithChildren
@@ -621,8 +685,11 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   berryBerryRoute: berryBerryRouteWithChildren,
+  pokemonPokemonPokemonIdRoute: pokemonPokemonPokemonIdRoute,
   BerryFirmnessFirmnessIdRoute: BerryFirmnessFirmnessIdRoute,
+  pokemonPokemonIndexRoute: pokemonPokemonIndexRoute,
   BerryFirmnessIndexRoute: BerryFirmnessIndexRoute,
+  pokemonPokemonPokemonIdModalRoute: pokemonPokemonPokemonIdModalRoute,
   pokemonPokemonabilityAbilityRoute:
     pokemonPokemonabilityAbilityRouteWithChildren,
   pokemonPokemongrowthRateGrowthRateRoute:
@@ -658,8 +725,11 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/(berry)/berry",
+        "/(pokemon)/pokemon_/$pokemonId",
         "/berry_/firmness/$firmnessId",
+        "/(pokemon)/pokemon/",
         "/berry_/firmness/",
+        "/(pokemon)/pokemon_/$pokemonId_/modal",
         "/(pokemon)/pokemon_/(ability)/ability",
         "/(pokemon)/pokemon_/(growth-rate)/growth-rate",
         "/(pokemon)/pokemon_/(nature)/nature",
@@ -689,6 +759,9 @@ export const routeTree = rootRoute
       "filePath": "(berry)/berry.$berryId.tsx",
       "parent": "/(berry)/berry"
     },
+    "/(pokemon)/pokemon_/$pokemonId": {
+      "filePath": "(pokemon)/pokemon_/$pokemonId.tsx"
+    },
     "/berry_/firmness/$firmnessId": {
       "filePath": "berry_/firmness.$firmnessId.tsx"
     },
@@ -696,8 +769,14 @@ export const routeTree = rootRoute
       "filePath": "(berry)/berry.index.tsx",
       "parent": "/(berry)/berry"
     },
+    "/(pokemon)/pokemon/": {
+      "filePath": "(pokemon)/pokemon.index.tsx"
+    },
     "/berry_/firmness/": {
       "filePath": "berry_/firmness.index.tsx"
+    },
+    "/(pokemon)/pokemon_/$pokemonId_/modal": {
+      "filePath": "(pokemon)/pokemon_.$pokemonId_.modal.tsx"
     },
     "/(pokemon)/pokemon_/(ability)/ability": {
       "filePath": "(pokemon)/pokemon_/(ability)/ability.tsx",
